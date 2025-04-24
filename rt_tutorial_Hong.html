@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Language Study</title>
+  <title>Question Experiment</title>
   <!-- Load JsPsych -->
   <script src="https://unpkg.com/jspsych@7.3.4"></script>
   <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.4"></script>
   <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.3"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.3"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-audio-response@2.1.0"></script>
   <!--Stimuli:--> 
-  <script src="stims.js"></script>
+  <!--<script src="stims.js"></script>--> 
   
   <link href="https://unpkg.com/jspsych@7.3.3/css/jspsych.css" rel="stylesheet" type="text/css" />
   
@@ -18,96 +20,153 @@
     const jsPsych = initJsPsych({
      show_progress_bar: true,
       on_finish: function() {
-        // Displays data at the end of the experiment
-        // Better to comment out for the real experiment so participants aren't confused
         jsPsych.data.displayData();
       }
     });
 
-    // Simple stimuli for debugging 
-    //const experimentStimuli = [
-    //  ["Alice", "met", "Bob"],
-    //  ["Alice", "and", "Bob", "went", "to", "the", "store"]
-    //];
-
-    
-    // We will store each trial in a list called timeline 
+  // Stimuli: define caption + picture options
+  const stimuliSets = [
+  {
+    category: "train",
+    description1: "Tomorrow you need to go from Palo Alto to San Francisco. Your brother goes there quite frequently and you remember he told you that:",
+    description2: "You go to the stationto the ticket office and you ask for a train ticket for the next morning. The operator answers to you:",
+    originalBiasOptions: [
+      { caption: "He usually takes a train in the morning, before 7:00", 
+        image: "images/train.png",
+        condition: "spk-pos" },
+      { caption: "He doesn't remember if there is a train in the early morning, before 7:00.", 
+        image: "images/train.png",
+        condition: "spk-neu" },
+      { caption: "There is no train available in the early morning, before 7:00.", 
+        image: "images/train.png",
+        condition: "spk-neg" }
+    ],
+    contextualEvidenceOptions: [
+      { caption: "The only train available is at 11:00", 
+        image: "images/train.png",
+        condition: "evi-pos" },
+      { caption: "Do you have any preference?", 
+        image: "images/train.png",
+        condition: "evi-neu"
+       },
+      { caption: "I suggest you take a train at 6:00", 
+        image: "images/train.png",
+        condition: "evi-neg" }
+    ],
+    polarQuestions: [
+      { question: "Is there a train in the early morning?",
+        type: "PPQ" },
+      { question: "Really? Is there a train in the early morning?",
+        type: "ReallyPQ" },
+      { question: "Is there no train in the early morning?",
+        type: "LNQ" },
+      { question: "Isn't there a train in the early morning?",
+        type: "HNQ" },
+      { question: "Other",
+        type: "Other" }
+    ]
+  },
+  {
+    category: "restaurant",
+    description: "You and your friend are looking for a place to eat. Jane loves Indian cuisine and you remember she told you that:",
+    originalBiasOptions: [
+      { caption: "This Indian restaurant is usually packed.", image: "images/food.png" },
+      { caption: "Sometimes it's easy to find a table.", image: "images/food.png" },
+      { caption: "It’s rarely crowded on weekdays.", image: "images/food.png" }
+    ],
+    contextualEvidenceOptions: [
+      { caption: "It’s best to book a table.", image: "images/food.png" },
+      { caption: "You can probably walk in.", image: "images/food.png" },
+      { caption: "There might be a long wait today.", image: "images/food.png" }
+    ],
+    polarQuestions: [
+      "Is there a train in the early morning?",
+      "Really? Is there a train in the early morning?",
+      "Is there no train in the early morning?",
+      "Isn't there a train in the early morning?",
+      "Other"
+    ]
+  }
+  ]  
+    //Store each trial in a list called timeline 
     const timeline = [];
 
     // Instructions
-    //TODO: Fill in the parameters here for a plugin which displays some instructions. 
-    // Tell the participants they will be reading one word at a time, and pressing
-    // the spacebar to advance to the next word. 
     const instructions = {
       type: jsPsychInstructions,
-      pages: ['<div class="content"><h2>Self-Paced Reading Time Study</h2>' +     
-              '<p>In this experiment, you will read sentences one word at a time.</p>' +
-              '<p>Press the <strong>SPACEBAR</strong> to reveal each word.</p>' +
-              '<p>Please read at a natural pace, as you normally would.</p>' +
-              '<p>Press the SPACEBAR to begin.</p></div>'
+      pages: ['<div class="content"><h2>Thank you for participating in this study!</h2>' +  
+              '<p>In this experiment, you will read a short story.</p>' +              
+              '<p>Each story consists of two pictures with a few sentences.</p>' +
+              '<p>After reading the story, you will be presented with a range of questions.</p>' +
+              '<p>Finally you will recording the question you choose.</p>' +
+              '<p>Press the Next to begin.</p></div>'
     ],
     show_clickable_nav: true,
   };      
     timeline.push(instructions);
 
-    // // Function to create reading trials for a sentence
-    function createReadingTrials(item, sentenceNum) {
-          const trials = [];
-          const sentence = item.sentence;
-          const condition = item.condition;
-      
-      //TODO: Add a trial showing a fixation cross briefly, before each sentence
-      trials.push({
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: '<div class="fixation" style="font-size: 36px;">+</div>',
-        choices: "NO_KEYS",
-        trial_duration: 500
-      }); 
+      // Generate Trials (Example: 5 trials for demo)
+    stimuliSets.forEach(set => {
+    for (let t = 0; t < 2; t++) {
+      const randomOriginal = jsPsych.randomization.sampleWithoutReplacement(set.originalBiasOptions, 1)[0];
+      const randomContext = jsPsych.randomization.sampleWithoutReplacement(set.contextualEvidenceOptions, 1)[0];
 
-      // Prompt to begin sentence
-      //TODO:  Add a trial showing a message telling the participant to press the spacebar to begin the sentence
-      trials.push({
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: '<p style="font-size: 24px;">Press the SPACEBAR to begin the next sentence.</p>',
-        choices: [' ']
-      });
-      
-      // Loops over every word in the sentence 
-      // Each word is its own trial 
-      for (let i = 0; i < sentence.length; i++) {
-        trials.push({
-          // TODO: FIll me in the plugin parameters here! 
-          // The plugin should display a word on each trial, 
-          // and then advance to the next word when the spacebar is pressed.
-          // Make sure the trial saves: 
-          // The word displayed & the participant Reaction Time, PLUS:
-          // The number of the sentence and the number of the word in the sentence
-          type: jsPsychHtmlKeyboardResponse,
-          stimulus: `${sentence[i]}`,
-          choices: [' '],
-          data: {
-            word: sentence[i],
-            word_number: i + 1,
-            sentence_number: sentenceNum,
-            condition: condition
-          }
-        });
-       }      
 
-       return trials;
+    timeline.push({
+      type: jsPsychInstructions,
+      pages: [
+      `
+        <p>${set.description1}</p>
+        <img src="${randomOriginal.image}" style="max-width:100px;"><br>
+        <p>${randomOriginal.caption}</p>
+       `,
+       `
+        <p>${set.description2}</p>
+        <img src="${randomContext.image}" style="max-width:100px;"><br>
+        <p>${randomContext.caption}</p>
+      `,
+      ],
+      show_clickable_nav: true,
+      button_label_previous: "Back",
+      button_label_next: "Next",
+});
+
+    // List of Polar Questions
+    timeline.push({
+      type: jsPsychSurveyMultiChoice,
+      preamble: `
+        <p>Select ONE question from the list below that you would ask.</p>
+        <p>After making your choice, click "Continue" to proceed.</p>
+      `,
+      questions: [
+        {
+          prompt: "Which question would you ask?",
+          options: set.polarQuestions.map(q => q.question),
+          required: true
+        }
+      ],
+      button_label: "Continue",
+      data: {
+        category: set.category,
+        phase: 'polar_question',
+        caption1_condition: randomOriginal.condition,
+        caption2_condition: randomContext.condition
       }
+    });
 
-    // TODO: Shuffle the presentation order of the sentences 
+    //Recording
+    //timeline.push({
+    //  type: jsPsychHtmlAudioResponse,
+    //  stimulus: `
+    //  <p style="font-size:48px; color:red;">GREEN</p>
+    //  <p>Speak the color of the ink.</p>`,
+      //recording_duration: 3500,
+    //  save_audio_url: true
+    //});
+  }
+});
 
-    var shuffledArray = jsPsych.randomization.shuffle(experimentStimuli);
-
-    // Add reading trials for each sentence
-    for (let i = 0; i < shuffledArray.length; i++) {
-      const readingTrials = createReadingTrials(shuffledArray[i], i + 1);
-      timeline.push(...readingTrials);
-    }
-
-    // Nice to tell participants they are done, thank you, etc
+    // Completion
     const completion = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: '<div class="content"><h2>Thank you!</h2>' +
