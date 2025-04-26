@@ -1,4 +1,3 @@
-// stimuli.js
 const stimuliSets = [
   {
     category: "train",
@@ -45,24 +44,24 @@ const stimuliSets = [
     description1: "Tomorrow you need to visit the city library early in the morning. Your friend often goes there and you remember they told you that:",
     description2: "You arrive at the library and ask the receptionist about the opening hours. The receptionist tells you:",
     originalBiasOptions: [
-      { caption: "They usually find the library open before 8:00 AM.", 
+      { caption: "She usually finds the library open before 8:00 AM.", 
         image: "images/library_pos.png",
         condition: "spk-pos" },
-      { caption: "They don't remember exactly when the library opens.", 
+      { caption: "She doesn't remember exactly when the library opens.", 
         image: "images/library_neu.png",
         condition: "spk-neu" },
-      { caption: "They think the library usually opens late, after 10:00 AM.", 
+      { caption: "She thinks the library usually opens late, after 10:00 AM.", 
         image: "images/library_neg.png",
         condition: "spk-neg" }
     ],
     contextualEvidenceOptions: [
-      { caption: "I suggest you come in at 7:30 AM.", 
+      { caption: "You can come in at 7:30 AM tomorrow.", 
         image: "images/library_pos.png",
         condition: "evi-pos" },
       { caption: "The schedule varies—better to check.", 
         image: "images/library_neu.png",
         condition: "evi-neu" },
-      { caption: "Today, the library only opens at 11:00 AM.", 
+      { caption: "Tomorrow, the library only opens at 11:00 AM.", 
         image: "images/library_neg.png",
         condition: "evi-neg" }
     ],
@@ -79,4 +78,4 @@ const stimuliSets = [
         type: "Other" }
     ]
   }
-  ]  
+  ]
