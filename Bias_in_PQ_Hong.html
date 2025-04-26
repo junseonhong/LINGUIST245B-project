@@ -73,24 +73,24 @@
     description1: "Tomorrow you need to visit the city library early in the morning. Your friend often goes there and you remember they told you that:",
     description2: "You arrive at the library and ask the receptionist about the opening hours. The receptionist tells you:",
     originalBiasOptions: [
-      { caption: "They usually find the library open before 8:00 AM.", 
+      { caption: "She usually finds the library open before 8:00 AM.", 
         image: "images/library_pos.png",
         condition: "spk-pos" },
-      { caption: "They don't remember exactly when the library opens.", 
+      { caption: "She doesn't remember exactly when the library opens.", 
         image: "images/library_neu.png",
         condition: "spk-neu" },
-      { caption: "They think the library usually opens late, after 10:00 AM.", 
+      { caption: "She thinks the library usually opens late, after 10:00 AM.", 
         image: "images/library_neg.png",
         condition: "spk-neg" }
     ],
     contextualEvidenceOptions: [
-      { caption: "I suggest you come in at 7:30 AM.", 
+      { caption: "You can come in at 7:30 AM tomorrow.", 
         image: "images/library_pos.png",
         condition: "evi-pos" },
       { caption: "The schedule varies—better to check.", 
         image: "images/library_neu.png",
         condition: "evi-neu" },
-      { caption: "Today, the library only opens at 11:00 AM.", 
+      { caption: "Tomorrow, the library only opens at 11:00 AM.", 
         image: "images/library_neg.png",
         condition: "evi-neg" }
     ],
@@ -115,25 +115,34 @@
     const instructions = {
       type: jsPsychInstructions,
       pages: ['<div class="content"><h2>Thank you for participating in this study!</h2>' +  
-              '<p>In this experiment, you will read a short story.</p>' +              
-              '<p>Each story consists of two pictures with a few sentences.</p>' +
-              '<p>After reading the story, you will be presented with a range of questions.</p>' +
-              '<p>Finally, you will recording the question you choose.</p>' +
-              '<p>Press the Next to set up the microphone.</p></div>'
+              '<p>In this experiment, you will read short stories illustrated with two pictures and accompanying sentences.</p>' +              
+              '<p>After each story, you will be asked to select one question from a list that you would most likely ask in that situation.</p>' +
+              '<p>Once you have made your selection, you will record yourself asking that question using your microphone.</p>' +
+              '<p>Please ensure you are in a quiet environment for clear recording.</p>' +
+              '<p>Press "Next" to set up your microphone before we begin.</p></div>'
     ],
     show_clickable_nav: true,
   };      
     timeline.push(instructions);
 
+    // Setting up microphone
     const trial = {
       type: jsPsychInitializeMicrophone,
       device_select_message: [
-              '<p>Before we begin the experiment, we need to make sure your microphone is working properly.</p>'+
-              '<p>Please allow the access to your microphone and select the microphone you would like to use.</p>'
+              '<p>Before starting the experiment, we need to ensure your microphone is set up correctly.</p>' +
+              '<p>Please grant permission to access your microphone when prompted.</p>' +
+              '<p>After that, select the microphone you wish to use from the list below.</p>'
             ]
     };
 
     timeline.push(trial);
+
+    const begin = {
+      type: jsPsychInstructions,
+      pages: ['<div class="content"><h2>Let\'s begin!</h2>'],
+      show_clickable_nav: true,
+     };      
+    timeline.push(begin);
 
       // Generate Trials (Example: 5 trials for demo)
     stimuliSets.forEach(set => {
@@ -182,6 +191,10 @@
         caption1_condition: randomOriginal.condition,
         caption2_condition: randomContext.condition
       },
+      on_finish: function(data) {
+        const selected = data.response.Q0;
+        jsPsych.data.addProperties({ selected_question: selected });
+    }
     });
 
     //Recording
@@ -189,15 +202,19 @@
       type: jsPsychHtmlButtonResponse,
       stimulus: `
       <p>You will now record your question.</p>
-      <p>When you're ready, click the button below to start recording.</p>`,
+      <p>When you're ready, click the button below to start recording.</p>
+      <p>The recording will start automatically, and you have up to 10 seconds.`,
       choices: ['Start Recording']
   });
 
     timeline.push({
       type: jsPsychHtmlAudioResponse,
-      stimulus: `
-      <p><strong>You selected:</strong></p>
-      <p>Question</p>`,
+      stimulus: function() {
+        const selected = jsPsych.data.get().filter({phase: 'polar_question'}).last(1).values()[0].response.Q0;
+        return `
+        <p><strong>You selected:</strong></p>
+        <p>"${selected}"</p>`;
+      },
       show_done_button: true,
       done_button_label: 'Finish Recording',
       recording_duration: 10000
@@ -213,6 +230,8 @@
       choices: [' ']
     };
     timeline.push(completion);
+
+    //timeline.push(save_data)
 
     // This line actually runs the experiment 
     jsPsych.run(timeline);
