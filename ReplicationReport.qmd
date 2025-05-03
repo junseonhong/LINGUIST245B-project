@@ -12,7 +12,7 @@ format:
 
 ## Introduction
 
-The original study "Bias in polar questions: Evidence from British English and German production experiments" by Domaneschi, Romero, and Braun (2017) investigated how different types of bias — original speaker bias (prior beliefs) and contextual evidence bias (information from the context) — influence the form of polar questions used in British English and German. They examined four key question types: positive polar questions (PosQ), low negation polar questions (LowNQ), high negation polra questions (HiNQ), and polar questions with "really" (really-PosQ). Through production experiments, they found that speakers select different forms depending on the interaction between the two kinds of bias.
+The original study "Bias in polar questions: Evidence from British English and German production experiments" by Domaneschi, Romero, and Braun (2017) investigated how different types of bias — original speaker bias (prior beliefs) and contextual evidence bias (information from the context) — influence the form of polar questions used in British English and German. They examined four key question types: positive polar questions (PosQ), low negation polar questions (LowNQ), high negation polar questions (HiNQ), and polar questions with "really" (really-PosQ). Through production experiments, they found that speakers select different forms depending on the interaction between the two kinds of bias.
 
 Building on the original study, this replication explored whether American English speakers demonstrate similar sensitivity to original speaker bias and contextual evidence bias when selecting different polar question forms. Like the original study, this replication manipulated original bias (for p, neutral, against p) and contextual evidence (for p, neutral, against p) across various conversational scenarios. Participants selected and produced the polar question form they found most appropriate among PosQ, LowNQ, HiNQ, really-PosQ, or an "Other" option.
 
@@ -23,8 +23,6 @@ Building on the original study, this replication explored whether American Engli
 To achieve 80% power to detect the original effect size observed in the neutral/p condition, which is the weakest effect in the study, approximately 83 participants are required:
 
 pwr.t.test(d = 0.312, sig.level = 0.05, power = 0.80, type = "one.sample", alternative = "two.sided")
-
-One-sample t test power calculation 
 
               n = 82.57147
               d = 0.312
@@ -56,19 +54,19 @@ This replication study employed the same materials and design framework, but wit
 
 ### Procedure	
 
-The procedure used in this replication study precisely followed that of the original research by Domaneschi et al. (2017) as below:
+The procedure used in this replication study precisely followed that of the original research as below:
 
-"There were six experimental lists, rotating the relevant levels of original bias and contextual evidence across trials following a Latin Square design. Consequently, each participant received each of the 30 experimental items, but each item appeared in only one of the six conditions (resulting in 5 items per condition). The trials were pseudo-randomized, repeating a certain condition at most once. Each list further included all the filler items, approximately evenly distributed throughout the list. The practice trial was placed at the beginning of the list. Participants were randomly assigned to one of the experimental lists (7 participants for each list)."
+"There were six experimental lists, rotating the relevant levels of original bias and contextual evidence across trials following a Latin Square design. Consequently, each participant received each of the 30 experimental items, but each item appeared in only one of the six conditions (resulting in 5 items per condition). The trials were pseudo-randomized, repeating a certain condition at most once. Each list further included all the filler items, approximately evenly distributed throughout the list. The practice trial was placed at the beginning of the list. Participants were randomly assigned to one of the experimental lists (7 participants for each list).
 
-"In all trials, the first caption was shown on the screen together with the first picture, whose purpose was to generate a positive, negative, or neutral original bias toward the proposition p. To proceed, participants had to press the space bar on the keyboard. The second caption was then shown on the screen together with the second picture, whose purpose was to generate a positive, negative, or contextual evidence bias toward the proposition p. After pressing the space bar, a list of questions appeared on the screen. After producing a question, participants could proceed by pressing the space bar again. Their response was recorded directly."
+In all trials, the first caption was shown on the screen together with the first picture, whose purpose was to generate a positive, negative, or neutral original bias toward the proposition p. To proceed, participants had to press the space bar on the keyboard. The second caption was then shown on the screen together with the second picture, whose purpose was to generate a positive, negative, or contextual evidence bias toward the proposition p. After pressing the space bar, a list of questions appeared on the screen. After producing a question, participants could proceed by pressing the space bar again. Their response was recorded directly."
 
 ### Analysis Plan
 
 The replication followed the analysis procedures of the original study, which is presented below:
 
-Participant responses were manually segmented, and the initial online coding was independently verified by a second coder. Minor variations in word order (e.g., lack of verb inversion), tense, number agreement, or the presence of discourse particles were disregarded if they did not affect the interpretation of the speaker's bias toward the proposition.
+"Participant responses were manually segmented, and the initial online coding was independently verified by a second coder. Minor variations in word order (e.g., lack of verb inversion), tense, number agreement, or the presence of discourse particles were disregarded if they did not affect the interpretation of the speaker's bias toward the proposition.
 
-Statistical analysis focused on whether a specific polar question form was chosen in the majority of cases (i.e., more than 50%) within each bias condition. To assess this, the percentage of participants selecting the most frequent question type was averaged both by participants (t₁) and by items (t₂). These means were then submitted to two separate one-sample t-tests against the 50% baseline to determine if the preferred form was selected significantly more often than would be expected by chance.
+Statistical analysis focused on whether a specific polar question form was chosen in the majority of cases (i.e., more than 50%) within each bias condition. To assess this, the percentage of participants selecting the most frequent question type was averaged both by participants (t₁) and by items (t₂). These means were then submitted to two separate one-sample t-tests against the 50% baseline to determine if the preferred form was selected significantly more often than would be expected by chance."
 
 
 **Clarify key analysis of interest here**  You can also pre-specify additional analyses you plan to do. 
