@@ -1,0 +1,128 @@
+---
+title: "Replication of Bias in polar questions by Domaneschi, F., Romero, M., and Braun, B. (2017, Glossa)"
+author: "Junseon Hong (junseonh@stanford.edu)"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format:
+  html:
+    toc: true
+    toc_depth: 3
+---
+
+<!-- Replication reports should all use this template to standardize reporting across projects.  These reports will be public supplementary materials that accompany the summary report(s) of the aggregate results. -->
+
+## Introduction
+
+The original study "Bias in polar questions: Evidence from British English and German production experiments" by Domaneschi, Romero, and Braun (2017) investigated how different types of bias — original speaker bias (prior beliefs) and contextual evidence bias (information from the context) — influence the form of polar questions used in British English and German. They examined four key question types: positive polar questions (PosQ), low negation polar questions (LowNQ), high negation polra questions (HiNQ), and polar questions with "really" (really-PosQ). Through production experiments, they found that speakers select different forms depending on the interaction between the two kinds of bias.
+
+Building on the original study, this replication explored whether American English speakers demonstrate similar sensitivity to original speaker bias and contextual evidence bias when selecting different polar question forms. Like the original study, this replication manipulated original bias (for p, neutral, against p) and contextual evidence (for p, neutral, against p) across various conversational scenarios. Participants selected and produced the polar question form they found most appropriate among PosQ, LowNQ, HiNQ, really-PosQ, or an "Other" option.
+
+## Methods
+
+### Power Analysis
+
+To achieve 80% power to detect the original effect size observed in the neutral/p condition, which is the weakest effect in the study, approximately 83 participants are required:
+
+pwr.t.test(d = 0.312, sig.level = 0.05, power = 0.80, type = "one.sample", alternative = "two.sided")
+
+One-sample t test power calculation 
+
+              n = 82.57147
+              d = 0.312
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+    
+This sample size is relatively high and seems unfeasible.
+Alternatively, in the ¬p/p condition, which had the second weakest effect, about 17 participants are needed to achieve 80% power:
+
+pwr.t.test(d = 0.718, sig.level = 0.05, power = 0.80, type = "one.sample", alternative = "two.sided")
+
+              n = 17.24403
+              d = 0.718
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+### Planned Sample
+
+Planned sample size was 25, including any who fail attention checks or eligibility criteria. Participants were native speakers of American English.
+
+### Materials
+
+Original article used 46 written scenarios, including one practice trial, 30 target trials, and 15 filler trials. These scenarios presented ordinary fictional conversations (e.g., two friends preparing dinner, two students looking for the library). Each story was composed of two caption/picture pairs designed to manipulate original speaker bias and contextual evidence bias. After reading each scenario, participants selected the most appropriate polar question from a set of options.
+
+This replication study employed the same materials and design framework, but with a reduced number of scenarios.
+
+
+### Procedure	
+
+The procedure used in this replication study precisely followed that of the original research by Domaneschi et al. (2017) as below:
+
+"There were six experimental lists, rotating the relevant levels of original bias and contextual evidence across trials following a Latin Square design. Consequently, each participant received each of the 30 experimental items, but each item appeared in only one of the six conditions (resulting in 5 items per condition). The trials were pseudo-randomized, repeating a certain condition at most once. Each list further included all the filler items, approximately evenly distributed throughout the list. The practice trial was placed at the beginning of the list. Participants were randomly assigned to one of the experimental lists (7 participants for each list)."
+
+"In all trials, the first caption was shown on the screen together with the first picture, whose purpose was to generate a positive, negative, or neutral original bias toward the proposition p. To proceed, participants had to press the space bar on the keyboard. The second caption was then shown on the screen together with the second picture, whose purpose was to generate a positive, negative, or contextual evidence bias toward the proposition p. After pressing the space bar, a list of questions appeared on the screen. After producing a question, participants could proceed by pressing the space bar again. Their response was recorded directly."
+
+### Analysis Plan
+
+The replication followed the analysis procedures of the original study, which is presented below:
+
+Participant responses were manually segmented, and the initial online coding was independently verified by a second coder. Minor variations in word order (e.g., lack of verb inversion), tense, number agreement, or the presence of discourse particles were disregarded if they did not affect the interpretation of the speaker's bias toward the proposition.
+
+Statistical analysis focused on whether a specific polar question form was chosen in the majority of cases (i.e., more than 50%) within each bias condition. To assess this, the percentage of participants selecting the most frequent question type was averaged both by participants (t₁) and by items (t₂). These means were then submitted to two separate one-sample t-tests against the 50% baseline to determine if the preferred form was selected significantly more often than would be expected by chance.
+
+
+**Clarify key analysis of interest here**  You can also pre-specify additional analyses you plan to do. 
+
+### Differences from Original Study
+
+While the original study considered 6 conditions, replication considered 7 conditions including ¬p/p condition (negative speaker original bias and positive contextual evidence bias) which was not considered in original study.
+
+### Methods Addendum (Post Data Collection)
+
+You can comment this section out prior to final report with data collection.
+
+#### Actual Sample
+  Sample size, demographics, data exclusions based on rules spelled out in analysis plan
+
+#### Differences from pre-data collection methods plan
+  Any differences from what was described as the original plan, or “none”.
+
+
+## Results
+
+
+### Data preparation
+
+Data preparation following the analysis plan.
+	
+```{r include=F}
+### Data Preparation
+
+#### Load Relevant Libraries and Functions
+
+#### Import data
+
+#### Data exclusion / filtering
+
+#### Prepare data for analysis - create columns etc.
+```
+
+### Confirmatory analysis
+
+The analyses as specified in the analysis plan.  
+
+*Side-by-side graph with original graph is ideal here*
+
+### Exploratory analyses
+
+Any follow-up analyses desired (not required).  
+
+## Discussion
+
+### Summary of Replication Attempt
+
+Open the discussion section with a paragraph summarizing the primary result from the confirmatory analysis and the assessment of whether it replicated, partially replicated, or failed to replicate the original result.  
+
+### Commentary
+
+Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis, (b) assessment of the meaning of the replication (or not) - e.g., for a failure to replicate, are the differences between original and present study ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the replication attempt.  None of these need to be long.
