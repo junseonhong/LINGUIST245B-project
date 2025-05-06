@@ -10,8 +10,9 @@
   <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.3"></script>
   <script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@2.1.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-html-audio-response@2.1.0"></script>
-  <!--Stimuli:--> 
-  <!--<script src="stims.js"></script>--> 
+  <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-call-function@2.1.0"></script>
+  <script src="stims.js"></script>
   
   <link href="https://unpkg.com/jspsych@7.3.3/css/jspsych.css" rel="stylesheet" type="text/css" />
   
@@ -26,155 +27,128 @@
       }
     });
 
-  // Stimuli: define caption + picture options; short list for debugging
-  const stimuliSets = [
-  {
-    category: "train",
-    description1: "Tomorrow you need to go from Palo Alto to San Francisco. Your brother goes there quite frequently and you remember he told you that:",
-    description2: "You go to the station to the ticket office and you ask for a train ticket for the next morning. The operator answers to you:",
-    originalBiasOptions: [
-      { caption: "He usually takes a train in the morning, before 7:00", 
-        image: "images/train_pos.png",
-        condition: "spk-pos" },
-      { caption: "He doesn't remember if there is a train in the early morning, before 7:00.", 
-        image: "images/train_neu.png",
-        condition: "spk-neu" },
-      { caption: "There is no train available in the early morning, before 7:00.", 
-        image: "images/train_neg.png",
-        condition: "spk-neg" }
-    ],
-    contextualEvidenceOptions: [
-      { caption: "I suggest you take a train at 6:00", 
-      image: "images/train_pos.png",
-        condition: "evi-pos" },
-      { caption: "Do you have any preference?", 
-        image: "images/train_neu.png",
-        condition: "evi-neu"
-       },
-      { caption: "The only train available is at 11:00", 
-        image: "images/train_neg.png",
-        condition: "evi-neg" }
-    ],
-    polarQuestions: [
-      { question: "Is there a train in the early morning?",
-        type: "PPQ" },
-      { question: "Really? Is there a train in the early morning?",
-        type: "ReallyPQ" },
-      { question: "Is there no train in the early morning?",
-        type: "LNQ" },
-      { question: "Isn't there a train in the early morning?",
-        type: "HNQ" },
-      { question: "Other",
-        type: "Other" }
-    ]
-  },
-  {
-    category: "library",
-    description1: "Tomorrow you need to visit the city library early in the morning. Your friend often goes there and you remember they told you that:",
-    description2: "You arrive at the library and ask the receptionist about the opening hours. The receptionist tells you:",
-    originalBiasOptions: [
-      { caption: "She usually finds the library open before 8:00 AM.", 
-        image: "images/library_pos.png",
-        condition: "spk-pos" },
-      { caption: "She doesn't remember exactly when the library opens.", 
-        image: "images/library_neu.png",
-        condition: "spk-neu" },
-      { caption: "She thinks the library usually opens late, after 10:00 AM.", 
-        image: "images/library_neg.png",
-        condition: "spk-neg" }
-    ],
-    contextualEvidenceOptions: [
-      { caption: "You can come in at 7:30 AM tomorrow.", 
-        image: "images/library_pos.png",
-        condition: "evi-pos" },
-      { caption: "The schedule varies—better to check.", 
-        image: "images/library_neu.png",
-        condition: "evi-neu" },
-      { caption: "Tomorrow, the library only opens at 11:00 AM.", 
-        image: "images/library_neg.png",
-        condition: "evi-neg" }
-    ],
-    polarQuestions: [
-      { question: "Is the library open early in the morning?",
-        type: "PPQ" },
-      { question: "Really? Is the library open early in the morning?",
-        type: "ReallyPQ" },
-      { question: "Is the library not open early in the morning?",
-        type: "LNQ" },
-      { question: "Isn't the library open early in the morning?",
-        type: "HNQ" },
-      { question: "Other",
-        type: "Other" }
-    ]
-  }
-  ]  
     //Store each trial in a list called timeline 
     const timeline = [];
 
     // Instructions
     const instructions = {
       type: jsPsychInstructions,
-      pages: ['<div class="content"><h2>Thank you for participating in this study!</h2>' +  
-              '<p>In this experiment, you will read short stories illustrated with two pictures and accompanying sentences.</p>' +              
-              '<p>After each story, you will be asked to select one question from a list that you would most likely ask in that situation.</p>' +
-              '<p>Once you have made your selection, you will record yourself asking that question using your microphone.</p>' +
-              '<p>Please ensure you are in a quiet environment for clear recording.</p>' +
-              '<p>Press "Next" to set up your microphone before we begin.</p></div>'
+      pages: [`
+        <div class="content"><h2>Welcome, and thank you for participating!</h2> <br>
+        <p>In this experiment, you will be presented with short everyday situations, each described in two parts.</p>
+        <div style="border: 1px solid #ccc; padding: 15px; background-color: #f9f9f9; border-radius: 8px; margin: 15px 0;">
+            <li><strong>Part 1:</strong> You'll read what someone told you earlier, along with a picture.</li>
+            <li><strong>Part 2:</strong> You'll see what actually happens in that situation, again with a picture.</li>
+        </div>        
+        <p>After reading both parts, you'll see a list of questions. Please select the one you would most naturally ask in that context.</p>
+        <p>Then, you will record yourself asking the selected question aloud using your microphone. Please try to speak clearly and naturally.</p>
+        <p><strong>Make sure you are in a quiet space, and your microphone is working properly.</strong></p>
+        <p>Click "Next" to set up your microphone and begin the experiment.</p></div>
+        `
     ],
     show_clickable_nav: true,
-  };      
+    };      
     timeline.push(instructions);
 
     // Setting up microphone
     const trial = {
       type: jsPsychInitializeMicrophone,
-      device_select_message: [
-              '<p>Before starting the experiment, we need to ensure your microphone is set up correctly.</p>' +
-              '<p>Please grant permission to access your microphone when prompted.</p>' +
-              '<p>After that, select the microphone you wish to use from the list below.</p>'
+      device_select_message: [`
+            <p>Before starting the experiment, we need to ensure your microphone is set up correctly.</p>
+            <p>When prompted by your browser, please <strong>allow microphone access</strong>.</p>
+            <p><p>Once access is granted, you'll see a list of available microphones. <strong>Select the one you plan to use</strong>.</p>
+            `
             ]
     };
-
     timeline.push(trial);
+    
+    // Microphone test trial
+    const trialinstructions = {
+      type: jsPsychInstructions,
+      pages: [`
+            <div class="content"><h2>Microphone Test</h2>
+            <p>Next, you'll test your microphone by making a short recording.</p>
+            <p>When you're ready, click "Next" to begin.</p>
+            <p>Speak naturally — you can say something like: <em>"Testing, 1, 2, 3."</em></p>
+            <p>You'll be able to play back your recording to confirm that it worked.</p>
+            `
+    ],
+    show_clickable_nav: true,
+    };      
+    timeline.push(trialinstructions);
+
+    const testing = {
+    type: jsPsychHtmlAudioResponse,
+    stimulus: `
+        <h2 style="color: red;">Recording in Progress...</h2>
+        <p>Please say something like: <em>"Testing 1 2 3"</em></p>
+        `,
+    show_done_button: true,
+    done_button_label: 'Finish Recording',
+    recording_duration: 5000,
+    allow_playback: true,
+    };
+    timeline.push(testing)
 
     const begin = {
       type: jsPsychInstructions,
-      pages: ['<div class="content"><h2>Let\'s begin!</h2>'],
+      pages: ['<div class="content"><h1>Let\'s begin!</h1>'],
       show_clickable_nav: true,
-     };      
+    };      
     timeline.push(begin);
 
-      // Generate Trials (Example: 5 trials for demo)
-    stimuliSets.forEach(set => {
-    for (let t = 0; t < 1; t++) {
-      const randomOriginal = jsPsych.randomization.sampleWithoutReplacement(set.originalBiasOptions, 1)[0];
-      const randomContext = jsPsych.randomization.sampleWithoutReplacement(set.contextualEvidenceOptions, 1)[0];
+    // Generate Trials
+    const shuffledStimuliSets = jsPsych.randomization.shuffle(stimuliSets);
+    shuffledStimuliSets.forEach(set => {
+      for (let t = 0; t < 1; t++) {
+        // Get allowed combinations: exclude pos-pos and neg-neg
+        const allowedPairs = set.originalBiasOptions.flatMap(orig =>
+          set.contextualEvidenceOptions
+            .filter(evi => {
+              const origVal = orig.condition.split('-')[1];
+              const eviVal = evi.condition.split('-')[1];
+              return !(origVal === "pos" && eviVal === "pos") &&
+                     !(origVal === "neg" && eviVal === "neg");
+            })
+            .map(evi => ({ original: orig, context: evi }))
+    );
 
+    const selectedPair = jsPsych.randomization.sampleWithoutReplacement(allowedPairs, 1)[0];
+    const randomOriginal = selectedPair.original;
+    const randomContext = selectedPair.context;
 
-    timeline.push({
+    const choiceinstructions = {
       type: jsPsychInstructions,
       pages: [
-      `
-        <p>${set.description1}</p>
-        <img src="${randomOriginal.image}" style="max-width:100px;"><br>
-        <p>${randomOriginal.caption}</p>
-       `,
-       `
-        <p>${set.description2}</p>
-        <img src="${randomContext.image}" style="max-width:100px;"><br>
-        <p>${randomContext.caption}</p>
-      `,
+        `
+          <p>${set.description1}</p>
+          <img src="${randomOriginal.image}" style="max-width:100px;"><br>
+          <p>${randomOriginal.caption}</p>
+        `,
+        `
+          <p>${set.description2}</p>
+          <img src="${randomContext.image}" style="max-width:100px;"><br>
+          <p>${randomContext.caption}</p>
+        `
       ],
       show_clickable_nav: true,
       button_label_previous: "Back",
-      button_label_next: "Next",
-});
+      button_label_next: "Next"
+    };
+    timeline.push(choiceinstructions);
 
     // List of Polar Questions
-    timeline.push({
+    const questionchoice = {
       type: jsPsychSurveyMultiChoice,
       preamble: `
-        <p>Select ONE question from the list below that you would ask.</p>
+        <div style="border: 1px solid #ccc; background-color: #f9f9f9; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+          <p><strong>Reminder of what you just saw</strong></p>
+          <p>${set.description1}</p>
+          <p><em>${randomOriginal.caption}</em></p>
+          <p>${set.description2}</p>
+          <p><em>${randomContext.caption}</em></p>
+        </div>
+        <p><strong>Select ONE question from the list below that you would ask.</strong></p>
         <p>After making your choice, click "Continue" to proceed.</p>
       `,
       questions: [
@@ -193,34 +167,71 @@
       },
       on_finish: function(data) {
         const selected = data.response.Q0;
-        jsPsych.data.addProperties({ selected_question: selected });
-    }
+        const questionObj = set.polarQuestions.find(q => q.question === selected);
+        data.selected_question = selected;
+        data.selected_question_type = questionObj ? questionObj.type : "Unknown";
+      }
+    };
+    timeline.push(questionchoice);
+    // For "other" option:
+    timeline.push({
+      timeline: [
+        {
+          type: jsPsychSurveyText,
+          questions: [
+            {
+              prompt: "You selected 'Other'. Please type the question you would ask:",
+              name: 'other_question',
+              placeholder: 'Type your question here:',
+              required: true
+            }
+          ],
+          button_label: "Continue",
+          on_finish: function(data) {
+            const custom = data.response.other_question;
+            data.selected_question = custom;
+            data.selected_question_type = "Other";
+            // Update previous polar question trial as well
+            const last = jsPsych.data.get().filter({ phase: 'polar_question' }).last(1);
+            last.addToLast({ selected_question: custom, selected_question_type: "Other" });
+          }
+        }
+      ],
+      conditional_function: function() {
+        const last = jsPsych.data.get().filter({ phase: 'polar_question' }).last(1).values()[0];
+        return last && last.response && last.response.Q0 === "Other";
+      }
     });
 
     //Recording
-    timeline.push({
+    const recordinginstructions = {
       type: jsPsychHtmlButtonResponse,
       stimulus: `
-      <p>You will now record your question.</p>
-      <p>When you're ready, click the button below to start recording.</p>
-      <p>The recording will start automatically, and you have up to 10 seconds.`,
+        <h2>Recording</h2>
+        <p>You will now record your question.</p>
+        <p>When you're ready, click the button below to start recording.</p>
+        <p>The recording will start automatically, and you have up to 10 seconds.</p>
+      `,
       choices: ['Start Recording']
-  });
+    };
+    timeline.push(recordinginstructions);
 
-    timeline.push({
+    const recordQuestion = {
       type: jsPsychHtmlAudioResponse,
       stimulus: function() {
         const selected = jsPsych.data.get().filter({phase: 'polar_question'}).last(1).values()[0].response.Q0;
         return `
-        <p><strong>You selected:</strong></p>
-        <p>"${selected}"</p>`;
+          <h2 style="color: red; font-weight: bold;">Recording in progress...</h2>
+          <p><strong>You selected:</strong> "${selected}"</p>
+        `;
       },
       show_done_button: true,
       done_button_label: 'Finish Recording',
       recording_duration: 10000
+    };
+    timeline.push(recordQuestion);
+    }
     });
-  }
-});
 
     // Completion
     const completion = {
@@ -231,7 +242,47 @@
     };
     timeline.push(completion);
 
-    //timeline.push(save_data)
+
+    const save_data = {
+      type: jsPsychCallFunction,
+      func: function() {
+        const responses = jsPsych.data.get().filter({ phase: 'polar_question' }).values();
+
+        const filtered = responses.map(trial => ({
+          category: trial.category,
+          caption1_condition: trial.caption1_condition,
+          caption2_condition: trial.caption2_condition,
+          selected_question: trial.selected_question,
+          selected_question_type: trial.selected_question_type
+        }));
+
+        console.log("Filtered responses:", filtered);
+
+    // Save as CSV file
+    const csvRows = [
+      ['category','caption1_condition', 'caption2_condition', 'selected_question', 'selected_question_type'],
+      ...filtered.map(row => [
+        row.category,
+        row.caption1_condition,
+        row.caption2_condition,
+        `"${row.selected_question}"`,
+        row.selected_question_type
+      ])
+    ];
+
+    const csvContent = csvRows.map(e => e.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "results.csv";
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+};
+
+timeline.push(save_data);
+
 
     // This line actually runs the experiment 
     jsPsych.run(timeline);
