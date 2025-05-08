@@ -12,6 +12,7 @@
   <script src="https://unpkg.com/@jspsych/plugin-html-audio-response@2.1.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-call-function@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
   <script src="stims.js"></script>
   
   <link href="https://unpkg.com/jspsych@7.3.3/css/jspsych.css" rel="stylesheet" type="text/css" />
@@ -233,19 +234,17 @@
     }
     });
 
-    // Completion
-    const completion = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<div class="content"><h2>Thank you!</h2>' +
-                '<p>The experiment is now complete.</p>',
-      choices: [' ']
-    };
-    timeline.push(completion);
 
+    // save data
+    const subject_id = jsPsych.randomization.randomID(10);
+              const filename = `${subject_id}.csv`;
 
-    const save_data = {
-      type: jsPsychCallFunction,
-      func: function() {
+    const savedata = {
+      type: jsPsychPipe,
+      action: "save",
+      experiment_id: "4Lxq8NvoSbCB",  // Replace with your actual experiment ID
+      filename: filename,
+      data_string: () => {
         const responses = jsPsych.data.get().filter({ phase: 'polar_question' }).values();
 
         const filtered = responses.map(trial => ({
@@ -256,33 +255,29 @@
           selected_question_type: trial.selected_question_type
         }));
 
-        console.log("Filtered responses:", filtered);
+        const csvRows = [
+          ['category', 'caption1_condition', 'caption2_condition', 'selected_question', 'selected_question_type'],
+          ...filtered.map(row => [
+            row.category,
+            row.caption1_condition,
+            row.caption2_condition,
+            `"${row.selected_question}"`,
+            row.selected_question_type
+          ])
+        ];
 
-    // Save as CSV file
-    const csvRows = [
-      ['category','caption1_condition', 'caption2_condition', 'selected_question', 'selected_question_type'],
-      ...filtered.map(row => [
-        row.category,
-        row.caption1_condition,
-        row.caption2_condition,
-        `"${row.selected_question}"`,
-        row.selected_question_type
-      ])
-    ];
+        return csvRows.map(e => e.join(",")).join("\n");
+      }
+    };
+    timeline.push(savedata);
 
-    const csvContent = csvRows.map(e => e.join(",")).join("\n");
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "results.csv";
-    a.click();
-    window.URL.revokeObjectURL(url);
-  }
-};
-
-timeline.push(save_data);
-
+    const completion = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: '<div class="content"><h2>Thank you!</h2>' +
+                '<p>The experiment is now complete.</p>',
+      choices: [' ']
+    };
+    timeline.push(completion);
 
     // This line actually runs the experiment 
     jsPsych.run(timeline);
