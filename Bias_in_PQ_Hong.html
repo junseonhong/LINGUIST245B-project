@@ -28,6 +28,8 @@
       }
     });
 
+    const subject_id = jsPsych.randomization.randomID(10);
+
     //Store each trial in a list called timeline 
     const timeline = [];
 
@@ -227,7 +229,7 @@
     };
     timeline.push(recordinginstructions);
 
-    const recordQuestion = {
+    const recordquestion = {
       type: jsPsychHtmlAudioResponse,
       stimulus: function() {
         const selected = jsPsych.data.get().filter({phase: 'polar_question'}).last(1).values()[0].response.Q0;
@@ -238,15 +240,20 @@
       },
       show_done_button: true,
       done_button_label: 'Finish Recording',
-      recording_duration: 10000
+      recording_duration: 10000,
+      on_finish: function(data){
+        const filename = `${subject_id}_${jsPsych.getProgress().current_trial_global}_audio.webm`;
+        jsPsychPipe.saveBase64Data("4Lxq8NvoSbCB",  filename, data.response);
+        // delete the base64 data to save space. store the filename instead.
+        data.response = filename;
+      }
     };
-    timeline.push(recordQuestion);
+    timeline.push(recordquestion);
     }
     });
 
-
     // save data
-    const subject_id = jsPsych.randomization.randomID(10);
+    //const subject_id = jsPsych.randomization.randomID(10);
     const filename = `${subject_id}.csv`;
             
     const save_data = {
