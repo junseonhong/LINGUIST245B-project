@@ -99,24 +99,34 @@
     timeline.push(begin);
 
     // Generate Trials
-    const shuffledStimuliSets = jsPsych.randomization.shuffle(stimuliSets);
+   const shuffledStimuliSets = jsPsych.randomization.shuffle(stimuliSets);
+   const usedConditionPairs = new Set();
     shuffledStimuliSets.forEach(set => {
       for (let t = 0; t < 1; t++) {
-        // Get allowed combinations: exclude pos-pos and neg-neg
-        const allowedPairs = set.originalBiasOptions.flatMap(orig =>
-          set.contextualEvidenceOptions
-            .filter(evi => {
-              const origVal = orig.condition.split('-')[1];
-              const eviVal = evi.condition.split('-')[1];
-              return !(origVal === "pos" && eviVal === "pos") &&
-                     !(origVal === "neg" && eviVal === "neg");
-            })
-            .map(evi => ({ original: orig, context: evi }))
-    );
+        // Allowed combinations, excluding pos-pos and neg-neg
+        const allowedPairs = set.originalBiasOptions.flatMap(orig => {
+        return set.contextualEvidenceOptions
+          .filter(evi => {
+            const origVal = orig.condition.split('-')[1];
+            const eviVal = evi.condition.split('-')[1];
+            return !(origVal === "pos" && eviVal === "pos") &&
+                  !(origVal === "neg" && eviVal === "neg");
+          })
+          .map(evi => ({ original: orig, context: evi }));
+      });
 
-    const selectedPair = jsPsych.randomization.sampleWithoutReplacement(allowedPairs, 1)[0];
-    const randomOriginal = selectedPair.original;
-    const randomContext = selectedPair.context;
+      //A pair that has not been used
+      const uniquePair = allowedPairs.find(pair => {
+        const key = `${pair.original.condition}_${pair.context.condition}`;
+        if (usedConditionPairs.has(key)) return false;
+        usedConditionPairs.add(key);
+        return true;
+      });
+
+      if (!uniquePair) return;  // Skip if no new condition pair is available
+
+      const randomOriginal = uniquePair.original;
+      const randomContext = uniquePair.context;
 
     const choiceinstructions = {
       type: jsPsychInstructions,
