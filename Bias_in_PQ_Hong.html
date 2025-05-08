@@ -30,6 +30,8 @@
 
     //Store each trial in a list called timeline 
     const timeline = [];
+    const subject_id = jsPsych.randomization.randomID(10);
+    const filename = `${subject_id}.csv`;
 
     // Instructions
     const instructions = {
@@ -217,68 +219,47 @@
     };
     timeline.push(recordinginstructions);
 
-    const recordQuestion = {
-      type: jsPsychHtmlAudioResponse,
-      stimulus: function() {
-        const selected = jsPsych.data.get().filter({phase: 'polar_question'}).last(1).values()[0].response.Q0;
-        return `
-          <h2 style="color: red; font-weight: bold;">Recording in progress...</h2>
-          <p><strong>You selected:</strong> "${selected}"</p>
-        `;
-      },
-      show_done_button: true,
-      done_button_label: 'Finish Recording',
-      recording_duration: 10000
-    };
-    timeline.push(recordQuestion);
-    }
-    });
 
+
+    const recordQuestion = {
+  type: jsPsychHtmlAudioResponse,
+  stimulus: function() {
+    const selected = jsPsych.data.get().filter({ phase: 'polar_question' }).last(1).values()[0].selected_question;
+    return `
+      <h2 style="color: red; font-weight: bold;">Recording in progress...</h2>
+      <p><strong>You selected:</strong> "${selected}"</p>
+    `;
+  },
+  show_done_button: true,
+  done_button_label: 'Finish Recording',
+  recording_duration: 10000,
+  extensions: [
+    {
+      type: jsPsychPipe,
+      params: {
+        experiment_id: "4Lxq8NvoSbCB",
+        filename: function() {
+          const trialNum = jsPsych.data.get().filter({ type: 'html-audio-response' }).count();
+          return `${subject_id}_trial${trialNum + 1}_question_audio.webm`;
+        }
+      }
+    }
+  ]
+};
+timeline.push(recordQuestion)
+}
+});
 
       // save data
-    const subject_id = jsPsych.randomization.randomID(10);
-    const filename = `${subject_id}.csv`;
-
+            
     const save_data = {
-      type: jsPsychPipe,
-      action: "save",
-      experiment_id: "4Lxq8NvoSbCB",
-      filename: filename,
-      data_string: () => {
-        const responses = jsPsych.data.get().filter({ phase: 'polar_question' }).values();
-        const audioResponses = jsPsych.data.get().filter({ type: 'html-audio-response' }).values();
-
-        const combinedData = responses.map((trial, index) => {
-        const audioData = audioResponses[index] ? audioResponses[index].response : null;
-          return {
-            category: trial.category,
-            caption1_condition: trial.caption1_condition,
-            caption2_condition: trial.caption2_condition,
-            selected_question: trial.selected_question,
-            selected_question_type: trial.selected_question_type,
-            audio_data: audioData // Include the audio data
-          };
-        });
-
-        const csvRows = [
-          ['category', 'caption1_condition', 'caption2_condition', 'selected_question', 'selected_question_type', 'audio_data'],
-          ...combinedData.map(row => [
-            row.category,
-            row.caption1_condition,
-            row.caption2_condition,
-            `"${row.selected_question}"`,
-            row.selected_question_type,
-            row.audio_data // Save the audio data (will likely be a Blob object or its string representation)
-          ])
-        ];
-
-        return csvRows.map(e => e.join(",")).join("\n");
-      },
-      on_finish: function(data) {
-        console.log("Data and audio saved!");
-      }
-    };
-    timeline.push(save_data);
+              type: jsPsychPipe,
+              action: "save",
+              experiment_id: "4Lxq8NvoSbCB",
+              filename: filename,
+              data_string: ()=>jsPsych.data.get().csv()
+              };
+    timeline.push(save_data)
     
 
     const completion = {
