@@ -30,8 +30,6 @@
 
     //Store each trial in a list called timeline 
     const timeline = [];
-    const subject_id = jsPsych.randomization.randomID(10);
-    const filename = `${subject_id}.csv`;
 
     // Instructions
     const instructions = {
@@ -219,38 +217,27 @@
     };
     timeline.push(recordinginstructions);
 
-
-
     const recordQuestion = {
-  type: jsPsychHtmlAudioResponse,
-  stimulus: function() {
-    const selected = jsPsych.data.get().filter({ phase: 'polar_question' }).last(1).values()[0].selected_question;
-    return `
-      <h2 style="color: red; font-weight: bold;">Recording in progress...</h2>
-      <p><strong>You selected:</strong> "${selected}"</p>
-    `;
-  },
-  show_done_button: true,
-  done_button_label: 'Finish Recording',
-  recording_duration: 10000,
-  extensions: [
-    {
-      type: jsPsychPipe,
-      params: {
-        experiment_id: "4Lxq8NvoSbCB",
-        filename: function() {
-          const trialNum = jsPsych.data.get().filter({ type: 'html-audio-response' }).count();
-          return `${subject_id}_trial${trialNum + 1}_question_audio.webm`;
-        }
-      }
+      type: jsPsychHtmlAudioResponse,
+      stimulus: function() {
+        const selected = jsPsych.data.get().filter({phase: 'polar_question'}).last(1).values()[0].response.Q0;
+        return `
+          <h2 style="color: red; font-weight: bold;">Recording in progress...</h2>
+          <p><strong>You selected:</strong> "${selected}"</p>
+        `;
+      },
+      show_done_button: true,
+      done_button_label: 'Finish Recording',
+      recording_duration: 10000
+    };
+    timeline.push(recordQuestion);
     }
-  ]
-};
-timeline.push(recordQuestion)
-}
-});
+    });
+
 
       // save data
+    const subject_id = jsPsych.randomization.randomID(10);
+    const filename = `${subject_id}.csv`;
             
     const save_data = {
               type: jsPsychPipe,
