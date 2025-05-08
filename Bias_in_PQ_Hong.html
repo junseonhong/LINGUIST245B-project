@@ -239,10 +239,10 @@
     const subject_id = jsPsych.randomization.randomID(10);
               const filename = `${subject_id}.csv`;
 
-    const savedata = {
+    const save_data = {
       type: jsPsychPipe,
       action: "save",
-      experiment_id: "4Lxq8NvoSbCB",  // Replace with your actual experiment ID
+      experiment_id: "4Lxq8NvoSbCB",
       filename: filename,
       data_string: () => {
         const responses = jsPsych.data.get().filter({ phase: 'polar_question' }).values();
@@ -269,7 +269,7 @@
         return csvRows.map(e => e.join(",")).join("\n");
       }
     };
-    timeline.push(savedata);
+    timeline.push(save_data);
 
     const completion = {
       type: jsPsychHtmlKeyboardResponse,
