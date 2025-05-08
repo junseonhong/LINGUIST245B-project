@@ -239,37 +239,13 @@
       const subject_id = jsPsych.randomization.randomID(10);
               const filename = `${subject_id}.csv`;
             
-              const save_data = {
+      timeline.push({
       type: jsPsychPipe,
       action: "save",
-      experiment_id: "4Lxq8NvoSbCB",
-      filename: filename,
-      data_string: () => {
-        const responses = jsPsych.data.get().filter({ phase: 'polar_question' }).values();
-
-        const filtered = responses.map(trial => ({
-          category: trial.category,
-          caption1_condition: trial.caption1_condition,
-          caption2_condition: trial.caption2_condition,
-          selected_question: trial.selected_question,
-          selected_question_type: trial.selected_question_type
-        }));
-
-        const csvRows = [
-          ['category', 'caption1_condition', 'caption2_condition', 'selected_question', 'selected_question_type'],
-          ...filtered.map(row => [
-            row.category,
-            row.caption1_condition,
-            row.caption2_condition,
-            `"${row.selected_question}"`,
-            row.selected_question_type
-          ])
-        ];
-
-        return csvRows.map(e => e.join(",")).join("\n");
-      }
-    };
-    timeline.push(save_data);
+      experiment_id: "4Lxq8NvoSbCB",  // Your real experiment ID
+      filename: filename
+      // No data_string — this ensures full data including audio is uploaded
+    });
     
 
     const completion = {
