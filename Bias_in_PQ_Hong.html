@@ -16,7 +16,372 @@
   <script src="stims.js"></script>
   
   <link href="https://unpkg.com/jspsych@7.3.3/css/jspsych.css" rel="stylesheet" type="text/css" />
+
+  <!--Load Font-->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body,
+    .jspsych-content,
+    .jspsych-content-wrapper {
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
   
+    .jspsych-content-wrapper {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px 40px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      animation: fadeIn 0.6s ease;
+    }
+  
+    .jspsych-btn {
+      font-size: 14px;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      background-color: #64748b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .jspsych-btn:hover {
+      background-color: #475569;
+    }
+  
+    h1, h2 {
+      color: #2c3e50;
+    }
+  
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  
+    em {
+      color: #555;
+    }
+  
+    .content {
+      margin-top: 20px;
+    }
+  
+    li {
+      font-size: 17px;
+      line-height: 1.5;
+    }
+  
+    input[type="text"], textarea {
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+
+    .part-box {
+    background-color: #eef6ff;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    }
+
+    .instruction-box {
+    background-color: #eef6ff;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    animation: fadeIn 0.6s ease;
+    }
+
+    .tip-box {
+    background-color: #e8f5e9;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    }
+
+    .jspsych-instructions-nav {
+    margin-top: 30px;
+    text-align: center;
+    }
+
+  .mic-confirm-box {
+    margin: 20px 0;
+    font-size: 16px;
+    }
+
+  .mic-confirm-box input[type="radio"] {
+    margin-right: 8px;
+     }
+
+
+    .recording-box {
+    background-color: #fff5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    animation: fadeIn 0.6s ease;
+    }
+
+  .recording-box h3 {
+    margin-top: 0;
+    color: #b91c1c;
+    }
+
+  .recording-box p {
+    margin-top: 10px;
+    font-size: 16px;
+    }
+
+  .begin-box {
+    background-color: #e0f2fe;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    animation: fadeInUp 0.6s ease;
+    }
+
+  .begin-box h2 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #1d4ed8;
+    }
+
+  .begin-box p {
+    font-size: 18px;
+    color: #333;
+    }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      }
+      to {
+      opacity: 1;
+      transform: translateY(0);
+      }
+     }
+
+    .stimulus-box {
+      background-color: #ffffff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      margin-top: 20px;
+      animation: fadeIn 0.6s ease;
+      }
+
+    .stimulus-image {
+      max-width: 120px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      }
+
+    .stimulus-desc {
+      font-size: 18px;
+      margin-bottom: 10px;
+      }
+
+    .stimulus-caption {
+      font-size: 17px;
+      color: #555;
+      }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+      }
+
+    .question-context {
+      margin-bottom: 20px;
+      }
+
+    .context-box {
+      background-color: #f9fafb;
+      padding: 18px 24px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      }
+
+    .context-box p {
+      font-size: 17px;
+      margin: 6px 0;
+      color: #333;
+      }
+
+    .jspsych-survey-multi-choice-option label {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      background-color: #f1f5f9;
+      cursor: pointer;
+      transition: background-color 0.4s ease;
+      }
+
+    .jspsych-survey-multi-choice-option input[type="radio"] {
+      margin-right: 10px;
+      }
+
+    .jspsych-survey-multi-choice-option:hover {
+      background-color: #e0f2fe;
+      }
+    .jspsych-survey-text-question {
+      background-color: #f9fafb;
+      padding: 18px 24px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      }
+
+    .jspsych-survey-text-question p {
+      font-size: 17px;
+      color: #333;
+      margin-bottom: 10px;
+      }
+
+    .jspsych-survey-text-question input[type="text"],
+    .jspsych-survey-text-question textarea {
+      padding: 10px 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 8px;
+      background-color: #ffffff;
+      }
+
+    .jspsych-survey-text-question input[type="text"]:focus,
+    .jspsych-survey-text-question textarea:focus {
+      border-color: #3b82f6;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+      }
+
+    .recording-instructions-box {
+      background-color: #fefce8;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+      }
+
+    .recording-instructions-box h2 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #92400e;
+      }
+
+    .recording-instructions-box p {
+      font-size: 17px;
+      margin: 10px 0;
+      }
+
+    .recording-session-box {
+      background-color: #fff5f5;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+     }
+
+    .recording-session-box h3 {
+      color: #b91c1c;
+      font-size: 22px;
+      margin-top: 0;
+      font-weight: 600;
+     }
+
+    .recording-dot {
+      margin-right: 6px;
+      }
+
+    .selected-question-label {
+      margin-top: 20px;
+      font-size: 17px;
+      font-weight: 500;
+      color: #333;
+     }
+
+    .selected-question {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 10px 0 20px;
+      color: #1f2937;
+      }
+
+    .recording-note {
+      font-size: 16px;
+      color: #555;
+      font-style: italic;
+      }
+
+    .saving-box {
+      background-color: #ecfdf5;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.4s ease;
+      }
+
+    .saving-box h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #047857;
+      }
+
+    .saving-box p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
+      }
+
+    .completion-box {
+      background-color: #f0fdf4;;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.5s ease;
+      }
+
+    .completion-box h2 {
+      margin-top: 0;
+      font-size: 26px;
+      color: #15803d;
+      }
+
+    .completion-box p {
+      font-size: 18px;
+      color: #333;
+      margin-top: 10px;
+      }
+
+
+  </style>  
+
 </head>
 <body>
   <script>
@@ -35,31 +400,61 @@
 
     // Instructions
     const instructions = {
-      type: jsPsychInstructions,
-      pages: [`
-        <div class="content"><h2>Welcome, and thank you for participating!</h2> <br>
-        <p>In this experiment, you will be presented with short everyday situations, each described in two parts.</p>
-        <div style="border: 1px solid #ccc; padding: 15px; background-color: #f9f9f9; border-radius: 8px; margin: 15px 0;">
-            <li><strong>Part 1:</strong> You'll read what someone told you earlier, along with a picture.</li>
-            <li><strong>Part 2:</strong> You'll see what actually happens in that situation, again with a picture.</li>
-        </div>        
-        <p>After reading both parts, you'll see a list of questions. Please select the one you would most naturally ask in that context.</p>
-        <p>Then, you will record yourself asking the selected question aloud using your microphone. Please try to speak clearly and naturally.</p>
-        <p><strong>Make sure you are in a quiet space, and your microphone is working properly.</strong></p>
-        <p>Click "Next" to set up your microphone and begin the experiment.</p></div>
-        `
-    ],
-    show_clickable_nav: true,
-    };      
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+        <div class="content">
+          <h2>👋 Welcome, and thank you for participating!</h2><br>
+          <p>In this experiment, you will be presented with short everyday situations, each described in two parts.</p>
+          <div class="part-box">
+            <p><strong>Part 1:</strong> You'll read what someone told you earlier.</p>
+            <p><strong>Part 2:</strong> You'll read what actually happens in that situation.</p>
+          </div>
+          <p>After reading both parts, you'll see a list of questions. Please select the one you would most naturally ask in that context.</p>
+          <p>Then, you will record yourself asking the selected question aloud using your microphone. Please try to speak clearly and naturally.</p>
+          <div class="tip-box">
+              <h3>❗️ Using microphone is required.</h3>
+            <p><strong>Make sure you are in a quiet space, and your microphone is working properly by allowing the access of microphone in your browser.</strong></p>
+          </div>
+
+          <div class="mic-confirm-box">
+            <p><strong>Can you use a microphone to speak during this experiment?</strong></p>
+            <label><input type="radio" name="mic_confirm" value="yes"> Yes</label><br>
+            <label><input type="radio" name="mic_confirm" value="no"> No</label>
+          </div>
+
+          <p class="mic-warning" style="color: red; display: none; margin-top: 10px;">
+            ⚠️ Unfortunately, you cannot participate in this study without a working microphone.
+          </p>
+
+          <button id="custom-next" class="jspsych-btn">Next</button>
+        </div>
+      `,
+      choices: "NO_KEYS",
+      on_load: function () {
+        document.getElementById('custom-next').addEventListener('click', function () {
+          const selected = document.querySelector('input[name="mic_confirm"]:checked');
+          if (selected && selected.value === "yes") {
+            jsPsych.finishTrial({ microphone_confirmed: "yes" });
+          } else {
+            document.querySelector('.mic-warning').style.display = 'block';
+          }
+        });
+      }
+    };
     timeline.push(instructions);
 
     // Setting up microphone
     const trial = {
       type: jsPsychInitializeMicrophone,
       device_select_message: [`
+      <div class="content">
+            <h2>🎤 Microphone Setup</h2>
+      <div class="instruction-box">
             <p>Before starting the experiment, we need to ensure your microphone is set up correctly.</p>
-            <p>When prompted by your browser, please <strong>allow microphone access</strong>.</p>
+            <p>If prompted by your browser, please <strong>allow microphone access</strong>.</p>
             <p><p>Once access is granted, you'll see a list of available microphones. <strong>Select the one you plan to use</strong>.</p>
+      </div>
+      </div>
             `
             ]
     };
@@ -69,12 +464,20 @@
     const trialinstructions = {
       type: jsPsychInstructions,
       pages: [`
-            <div class="content"><h2>Microphone Test</h2>
-            <p>Next, you'll test your microphone by making a short recording.</p>
-            <p>When you're ready, click "Next" to begin.</p>
-            <p>Speak naturally — you can say something like: <em>"Testing, 1, 2, 3."</em></p>
-            <p>You'll be able to play back your recording to confirm that it worked.</p>
-            `
+        <div class="content">
+          <h2>🎧 Microphone Test</h2>
+
+          <div class="instruction-box">
+            <p>You'll now test your microphone by making a short recording.</p>
+
+            <p>Speak naturally — you can say anything you like, such as: <em>"Testing, 1, 2, 3."</em></p>
+
+            <p>After recording, you'll be able to play it back to make sure it's working.</p>
+
+            <p>Click <strong>Next</strong> when you're ready to begin.</p>
+          </div>
+        </div>
+        `
     ],
     show_clickable_nav: true,
     };      
@@ -83,9 +486,13 @@
     const testing = {
     type: jsPsychHtmlAudioResponse,
     stimulus: `
-        <h2 style="color: red;">Recording in Progress...</h2>
-        <p>Please say something like: <em>"Testing 1 2 3"</em></p>
-        `,
+        <div class="content">
+        <div class="recording-box">
+        <h3>🔴 Recording in Progress...</h3>
+        <p>Speak naturally — for example: <em>"Testing, 1, 2, 3."</em></p>
+      </div>
+    </div>
+  `,
     show_done_button: true,
     done_button_label: 'Finish Recording',
     recording_duration: 5000,
@@ -95,14 +502,21 @@
 
     const begin = {
       type: jsPsychInstructions,
-      pages: ['<div class="content"><h1>Let\'s begin!</h1>'],
+      pages: [`
+      <div class="content">
+        <div class="begin-box">
+          <h2>🎬 Let\'s begin!</h2>
+          <p>You're all set. Click <strong>Next</strong> to start the experiment.</p>
+      </div>
+    </div>
+    `],
       show_clickable_nav: true,
     };      
     timeline.push(begin);
 
     // Generate Trials
-   const shuffledStimuliSets = jsPsych.randomization.shuffle(stimuliSets);
-   const usedConditionPairs = new Set();
+    const shuffledStimuliSets = jsPsych.randomization.shuffle(stimuliSets);
+    const usedConditionPairs = new Set();
     shuffledStimuliSets.forEach(set => {
       for (let t = 0; t < 1; t++) {
         // Allowed combinations, excluding pos-pos and neg-neg
@@ -117,13 +531,13 @@
           .map(evi => ({ original: orig, context: evi }));
       });
 
-      //A pair that has not been used
-      const uniquePair = allowedPairs.find(pair => {
-        const key = `${pair.original.condition}_${pair.context.condition}`;
-        if (usedConditionPairs.has(key)) return false;
-        usedConditionPairs.add(key);
-        return true;
-      });
+    //A pair that has not been used
+    const uniquePair = allowedPairs.find(pair => {
+    const key = `${pair.original.condition}_${pair.context.condition}`;
+      if (usedConditionPairs.has(key)) return false;
+      usedConditionPairs.add(key);
+      return true;
+    });
 
       if (!uniquePair) return;  // Skip if no new condition pair is available
 
@@ -133,17 +547,21 @@
     const choiceinstructions = {
       type: jsPsychInstructions,
       pages: [
-        `
-          <p>${set.description1}</p>
-          <img src="${randomOriginal.image}" style="max-width:100px;"><br>
-          <p>${randomOriginal.caption}</p>
-        `,
-        `
-          <p>${set.description2}</p>
-          <img src="${randomContext.image}" style="max-width:100px;"><br>
-          <p>${randomContext.caption}</p>
-        `
-      ],
+      `
+        <div class="stimulus-box">
+          <img src="${randomOriginal.image}" alt="Image 1" class="stimulus-image">
+          <p class="stimulus-desc">${set.description1}</p>
+          <p class="stimulus-caption">${randomOriginal.caption}</p>
+        </div>
+      `,
+      `
+        <div class="stimulus-box">
+          <img src="${randomContext.image}" alt="Image 2" class="stimulus-image">
+          <p class="stimulus-desc">${set.description2}</p>
+          <p class="stimulus-caption">${randomContext.caption}</p>
+        </div>
+      `
+    ],
       show_clickable_nav: true,
       button_label_previous: "Back",
       button_label_next: "Next"
@@ -154,15 +572,18 @@
     const questionchoice = {
       type: jsPsychSurveyMultiChoice,
       preamble: `
-        <div style="border: 1px solid #ccc; background-color: #f9f9f9; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+      <div class="question-context">
+        <div class="context-box">
           <p><strong>Reminder of what you just saw</strong></p>
           <p>${set.description1}</p>
           <p><em>${randomOriginal.caption}</em></p>
           <p>${set.description2}</p>
           <p><em>${randomContext.caption}</em></p>
+          <p>Your Question: "___________________?"</p>
         </div>
         <p><strong>Select ONE question from the list below that you would ask.</strong></p>
         <p>After making your choice, click "Continue" to proceed.</p>
+      </div>
       `,
       questions: [
         {
@@ -220,10 +641,14 @@
     const recordinginstructions = {
       type: jsPsychHtmlButtonResponse,
       stimulus: `
-        <h2>Recording</h2>
-        <p>You will now record your question.</p>
-        <p>When you're ready, click the button below to start recording.</p>
-        <p>The recording will start automatically, and you have up to 10 seconds.</p>
+        <div class="content">
+          <div class="recording-instructions-box">
+            <h2>🎙️ Ready to Record</h2>
+            <p>You will now record your question.</p>
+            <p>When you're ready, click the button below to begin.</p>
+            <p>The recording will start automatically, and you'll have up to <strong>10 seconds</strong>.</p>
+          </div>
+        </div>
       `,
       choices: ['Start Recording']
     };
@@ -234,17 +659,26 @@
       stimulus: function() {
         const selected = jsPsych.data.get().filter({phase: 'polar_question'}).last(1).values()[0].response.Q0;
         return `
-          <h2 style="color: red; font-weight: bold;">Recording in progress...</h2>
-          <p><strong>You selected:</strong> "${selected}"</p>
+          <div class="content">
+            <div class="recording-session-box">
+              <h3>🔴 Recording in Progress<span id="dots"></h3>
+              <p class="selected-question-label">You selected:</p>
+              <p class="selected-question">"${selected}"</p>
+              <p class="recording-note">Speak clearly. You have up to 10 seconds.</p>
+            </div>
+          </div>
         `;
       },
       show_done_button: true,
       done_button_label: 'Finish Recording',
       recording_duration: 10000,
       on_finish: function(data){
-        const filename = `${subject_id}_${jsPsych.getProgress().current_trial_global}_audio.webm`;
+        const polarTrial = jsPsych.data.get().filter({ phase: 'polar_question' }).last(1).values()[0];
+        const questionType = polarTrial.selected_question_type || "UnknownType";
+        const category = polarTrial.category || "UnknownCategory";
+        const trialNum = jsPsych.getProgress().current_trial_global;
+        const filename = `${subject_id}_${category}_${questionType}_${trialNum}_audio.webm`;
         jsPsychPipe.saveBase64Data("4Lxq8NvoSbCB",  filename, data.response);
-        // delete the base64 data to save space. store the filename instead.
         data.response = filename;
       }
     };
@@ -252,10 +686,26 @@
     }
     });
 
-    // save data
+    // save csv
     //const subject_id = jsPsych.randomization.randomID(10);
     const filename = `${subject_id}.csv`;
-            
+    
+    const savinginstructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+        <div class="content">
+          <div class="saving-box">
+            <h2>💾 Saving your responses...</h2>
+            <p>Please wait a moment. Do not close your browser.</p>
+            <p>It may take up to few minutes.</p>
+          </div>
+        </div>
+      `,
+      choices: "NO_KEYS",
+      trial_duration: 5000
+    };
+    timeline.push(savinginstructions);
+
     const save_data = {
               type: jsPsychPipe,
               action: "save",
@@ -264,12 +714,19 @@
               data_string: ()=>jsPsych.data.get().csv()
               };
     timeline.push(save_data)
-    
+  
 
     const completion = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<div class="content"><h2>Thank you!</h2>' +
-                '<p>The experiment is now complete.</p>',
+      stimulus: `
+        <div class="content">
+          <div class="completion-box">
+            <h2>✅ Thank you!</h2>
+            <p>The experiment is now complete.</p>
+            <p>You may now close this window.</p>
+          </div>
+        </div>
+      `,
       choices: [' ']
     };
     timeline.push(completion);
