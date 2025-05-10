@@ -92,67 +92,67 @@
     }
 
     .part-box {
-    background-color: #eef6ff;
-    padding: 15px 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+      background-color: #eef6ff;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
     }
 
     .instruction-box {
-    background-color: #eef6ff;
-    padding: 15px 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    animation: fadeIn 0.6s ease;
+      background-color: #eef6ff;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      animation: fadeIn 0.6s ease;
     }
 
     .tip-box {
-    background-color: #e8f5e9;
-    padding: 15px 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+      background-color: #e8f5e9;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
     }
 
     .jspsych-instructions-nav {
-    margin-top: 30px;
-    text-align: center;
+      margin-top: 30px;
+      text-align: center;
     }
 
-  .mic-confirm-box {
-    margin: 20px 0;
-    font-size: 16px;
+    .mic-confirm-box {
+      margin: 20px 0;
+      font-size: 16px;
     }
 
-  .mic-confirm-box input[type="radio"] {
-    margin-right: 8px;
+    .mic-confirm-box input[type="radio"] {
+      margin-right: 8px;
      }
 
 
     .recording-box {
-    background-color: #fff5f5;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    animation: fadeIn 0.6s ease;
+      background-color: #fff5f5;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      animation: fadeIn 0.6s ease;
     }
 
-  .recording-box h3 {
-    margin-top: 0;
-    color: #b91c1c;
+    .recording-box h3 {
+      margin-top: 0;
+      color: #b91c1c;
     }
 
-  .recording-box p {
-    margin-top: 10px;
-    font-size: 16px;
+    .recording-box p {
+      margin-top: 10px;
+      font-size: 16px;
     }
 
-  .begin-box {
-    background-color: #e0f2fe;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    animation: fadeInUp 0.6s ease;
+    .begin-box {
+      background-color: #e0f2fe;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      animation: fadeInUp 0.6s ease;
     }
 
   .begin-box h2 {
@@ -200,8 +200,8 @@
       }
 
     .stimulus-caption {
-      font-size: 17px;
-      color: #555;
+      font-size: 18px;
+      color: #000000;
       }
 
     @keyframes fadeIn {
@@ -397,7 +397,7 @@
 
     #jspsych-progressbar-inner {
       height: 100%;
-      background-color: #3b82f6;
+      background: linear-gradient(to right, #f0f2f7, #2563eb);
       width: 0%;
       transition: width 0.4s ease;
       border-radius: 8px;
@@ -411,7 +411,7 @@
     const jsPsych = initJsPsych({
      show_progress_bar: true,
       on_finish: function() {
-        jsPsych.data.displayData();
+      //  jsPsych.data.displayData();
       }
     });
 
@@ -421,9 +421,9 @@
     const timeline = [];
 
     // Instructions
-    const instructions = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: `
+    const instructions= {
+      type: jsPsychInstructions,
+      pages: [`
         <div class="content">
           <h2>👋 Welcome, and thank you for participating!</h2><br>
           <p>In this experiment, you will be presented with short everyday situations, each described in two parts.</p>
@@ -431,17 +431,28 @@
             <p><strong>Part 1:</strong> You'll read what someone told you earlier.</p>
             <p><strong>Part 2:</strong> You'll read what actually happens in that situation.</p>
           </div>
-          <p>After reading both parts, you'll see a list of questions. Please select the one you would most naturally ask in that context.</p>
-          <p>Then, you will record yourself asking the selected question aloud using your microphone. Please try to speak clearly and naturally.</p>
-          <div class="tip-box">
-              <h3>❗️ Using microphone is required.</h3>
-            <p><strong>Make sure you are in a quiet space, and your microphone is working properly by allowing the access of microphone in your browser.</strong></p>
-          </div>
+          <p>After reading both parts, you'll see a list of questions and be asked to select the one you would most naturally ask in that context.</p>
+          <p>Then, you will record yourself asking the selected question aloud using your microphone.</p>
+        </div>
+      `],
+      show_clickable_nav: true
+    };
+    timeline.push(instructions);
 
-          <div class="mic-confirm-box">
-            <p><strong>Can you use a microphone to speak during this experiment?</strong></p>
-            <label><input type="radio" name="mic_confirm" value="yes"> Yes</label><br>
-            <label><input type="radio" name="mic_confirm" value="no"> No</label>
+    const checklist = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+        <div class="content">
+          <h2>📋 Quick Checklist Before You Begin</h2>
+          <div class="tip-box">
+            <h3>❗️ Microphone is required</h3>
+            <p><strong>Please make sure you can use a microphone and allow microphone access when prompted by your browser.</strong></p>
+            
+            <div class="mic-confirm-box">
+              <p><strong>Are you able to use a microphone to record your voice during this experiment?</strong></p>
+              <label><input type="radio" name="mic_confirm" value="yes"> Yes</label><br>
+              <label><input type="radio" name="mic_confirm" value="no"> No</label>
+            </div>
           </div>
 
           <p class="mic-warning" style="color: red; display: none; margin-top: 10px;">
@@ -463,7 +474,8 @@
         });
       }
     };
-    timeline.push(instructions);
+    timeline.push(checklist);
+
 
     // Setting up microphone
     const trial = {
@@ -473,7 +485,7 @@
             <h2>🎤 Microphone Setup</h2>
       <div class="instruction-box">
             <p>Before starting the experiment, we need to ensure your microphone is set up correctly.</p>
-            <p>If prompted by your browser, please <strong>allow microphone access</strong>.</p>
+            <p>If your browser prompts you again, please <strong>allow</strong> microphone access.</p>
             <p><p>Once access is granted, you'll see a list of available microphones. <strong>Select the one you plan to use</strong>.</p>
       </div>
       </div>
@@ -492,11 +504,11 @@
           <div class="instruction-box">
             <p>You'll now test your microphone by making a short recording.</p>
 
-            <p>Speak naturally — you can say anything you like, such as: <em>"Testing, 1, 2, 3."</em></p>
+            <p>Speak naturally — you can say anything you like, such as: <em>"Testing, one, two, three."</em></p>
 
             <p>After recording, you'll be able to play it back to make sure it's working.</p>
 
-            <p>Click <strong>Next</strong> when you're ready to begin.</p>
+            <p>When you're ready, click <strong>Next</strong> to begin.</p>
           </div>
         </div>
         `
@@ -506,19 +518,19 @@
     timeline.push(trialinstructions);
 
     const testing = {
-    type: jsPsychHtmlAudioResponse,
-    stimulus: `
-        <div class="content">
-        <div class="recording-box">
-        <h3>🔴 Recording in Progress...</h3>
-        <p>Speak naturally — for example: <em>"Testing, 1, 2, 3."</em></p>
+      type: jsPsychHtmlAudioResponse,
+      stimulus: `
+          <div class="content">
+          <div class="recording-box">
+          <h3>🔴 Recording in Progress...</h3>
+          <p>Speak naturally — for example: <em>"Testing, 1, 2, 3."</em></p>
+        </div>
       </div>
-    </div>
-  `,
-    show_done_button: true,
-    done_button_label: 'Finish Recording',
-    recording_duration: 5000,
-    allow_playback: true,
+    `,
+      show_done_button: true,
+      done_button_label: 'Finish Recording',
+      recording_duration: 5000,
+      allow_playback: true,
     };
     timeline.push(testing)
 
@@ -536,35 +548,27 @@
     };      
     timeline.push(begin);
 
-    // Generate Trials
-    const shuffledStimuliSets = jsPsych.randomization.shuffle(stimuliSets);
-    const usedConditionPairs = new Set();
-    shuffledStimuliSets.forEach(set => {
-      for (let t = 0; t < 1; t++) {
-        // Allowed combinations, excluding pos-pos and neg-neg
-        const allowedPairs = set.originalBiasOptions.flatMap(orig => {
-        return set.contextualEvidenceOptions
-          .filter(evi => {
-            const origVal = orig.condition.split('-')[1];
-            const eviVal = evi.condition.split('-')[1];
-            return !(origVal === "pos" && eviVal === "pos") &&
-                  !(origVal === "neg" && eviVal === "neg");
-          })
-          .map(evi => ({ original: orig, context: evi }));
-      });
+    const validConditions = [
+    ["spk-pos", "evi-neu"],
+    ["spk-pos", "evi-neg"],
+    ["spk-neu", "evi-pos"],
+    ["spk-neu", "evi-neu"],
+    ["spk-neu", "evi-neg"],
+    ["spk-neg", "evi-pos"],
+    ["spk-neg", "evi-neu"]
+  ];
 
-    //A pair that has not been used
-    const uniquePair = allowedPairs.find(pair => {
-    const key = `${pair.original.condition}_${pair.context.condition}`;
-      if (usedConditionPairs.has(key)) return false;
-      usedConditionPairs.add(key);
-      return true;
-    });
+    const shuffledConditions = jsPsych.randomization.shuffle(validConditions);
+    const shuffledStimuliSets = jsPsych.randomization.sampleWithoutReplacement(stimuliSets, 7);
 
-      if (!uniquePair) return;  // Skip if no new condition pair is available
+    for (let i = 0; i < 7; i++) {
+      const [biasCond, evidenceCond] = shuffledConditions[i];
+      const set = shuffledStimuliSets[i];
 
-      const randomOriginal = uniquePair.original;
-      const randomContext = uniquePair.context;
+      const randomOriginal = set.originalBiasOptions.find(b => b.condition === biasCond);
+      const randomContext = set.contextualEvidenceOptions.find(e => e.condition === evidenceCond);
+
+      if (!randomOriginal || !randomContext) continue;
 
     const choiceinstructions = {
       type: jsPsychInstructions,
@@ -601,15 +605,14 @@
           <p><em>${randomOriginal.caption}</em></p>
           <p>${set.description2}</p>
           <p><em>${randomContext.caption}</em></p>
-          <p>Your Question: "___________________?"</p>
         </div>
-        <p><strong>Select ONE question from the list below that you would ask.</strong></p>
-        <p>After making your choice, click "Continue" to proceed.</p>
+        <p><strong>Now, you want to ask ${set.person} a question. How would you ask?</strong></p>
+        <p>Your Question: "___________________?"</p>
       </div>
       `,
       questions: [
         {
-          prompt: "Which question would you ask?",
+          prompt: "<strong>Select ONE question from the list below that you would most naturally ask.</strong>",
           options: set.polarQuestions.map(q => q.question),
           required: true
         }
@@ -679,14 +682,23 @@
     const recordquestion = {
       type: jsPsychHtmlAudioResponse,
       stimulus: function() {
-        const selected = jsPsych.data.get().filter({phase: 'polar_question'}).last(1).values()[0].response.Q0;
+        const polarTrial = jsPsych.data.get().filter({ phase: 'polar_question' }).last(1).values()[0];
+        const selectedType = polarTrial.selected_question_type;
+        let displayedquestion;
+
+        if (selectedType === "Other") {
+          const otherTrial = jsPsych.data.get().filter({ selected_question_type: "Other" }).last(1).values()[0];
+          displayedquestion = otherTrial.selected_question;
+        } else {
+          displayedquestion = polarTrial.response.Q0;
+        }
         return `
           <div class="content">
             <div class="recording-session-box">
               <h3>🔴 Recording in Progress<span id="dots"></h3>
               <p class="selected-question-label">You selected:</p>
-              <p class="selected-question">"${selected}"</p>
-              <p class="recording-note">Speak clearly. You have up to 10 seconds.</p>
+              <p class="selected-question">"${displayedquestion}"</p>
+              <p class="recording-note">Please speak clearly. You have up to 10 seconds to record your question.</p>
             </div>
           </div>
         `;
@@ -706,7 +718,7 @@
     };
     timeline.push(recordquestion);
     }
-    });
+    
 
     // save csv
     //const subject_id = jsPsych.randomization.randomID(10);
@@ -736,15 +748,15 @@
               data_string: ()=>jsPsych.data.get().csv()
               };
     timeline.push(save_data)
-  
 
     const completion = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: `
         <div class="content">
           <div class="completion-box">
-            <h2>✅ Thank you!</h2>
-            <p>The experiment is now complete.</p>
+            <h2>✅ You're all done!</h2>
+            <p>Thank you very much for taking the time to participate in this study.</p>
+            <p>Your responses have been recorded successfully.</p>
             <p>You may now close this window.</p>
           </div>
         </div>
@@ -753,7 +765,7 @@
     };
     timeline.push(completion);
 
-    // This line actually runs the experiment 
+    //Run the experiment 
     jsPsych.run(timeline);
   </script>
 </body>
