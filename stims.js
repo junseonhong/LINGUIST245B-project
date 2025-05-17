@@ -1,12 +1,12 @@
 const stimuliSets = [
   {
     category: "train",
-    description1: "Tomorrow you need to go from Palo Alto to San Francisco. Your brother goes there quite frequently and you remember he says:",
+    description1: "Tomorrow you need to go from Palo Alto to San Francisco early in the morning. Your brother goes there quite frequently and you remember he said:",
     description2: "You go to the ticket office at the station and you ask for a train ticket for the next morning. The operator responds:",
     person: "the operator",
     originalBiasOptions: [
       { 
-        caption: "\"I usually take a train in the morning to get to work, before 7:00\"", 
+        caption: "\"I usually take a train in the morning to get to work, before 7:00.\"", 
         image: "images/train_pos.png",
         condition: "spk-pos" 
       },
@@ -63,58 +63,58 @@ const stimuliSets = [
   },
   {
     category: "library",
-    description1: "Next week, you need to visit the city library early in the morning. Your friend often goes there and you remember she told you that:",
-    description2: "You called the library and asked the receptionist tells you:",
+    description1: "You need to read a book for a class and want to borrow it from the library. You're new to town, but you remember hearing something from your landlord:",
+    description2: "To make sure, you called the city hall and heard this:",
     person:"receptionist",
     originalBiasOptions: [
       { 
-        caption: "\"I used to study the library at 8:00 AM.\"", 
+        caption: "\"A new library opened last week two blocks away.\"", 
         image: "images/library_pos.png",
         condition: "spk-pos" 
       },
       { 
-        caption: "\"I don't remember exactly when the library opens.\"", 
+        caption: "\"I haven't really looked for a library around here, so I'm not sure.\"", 
         image: "images/library_neu.png",
         condition: "spk-neu" 
       },
       { 
-        caption: "\"I believe the library usually opens late, after noon.\"", 
+        caption: "\"I wish there was a library in our city.\"", 
         image: "images/library_neg.png",
         condition: "spk-neg" 
       }
     ],
     contextualEvidenceOptions: [
       { 
-        caption: "\"You can come in at 7:30 AM tomorrow.\"", 
+        caption: "\"There's one on Escondido Road.\"", 
         image: "images/library_pos.png",
         condition: "evi-pos" 
       },
       { 
-        caption: "\"The schedule varies—better to check the website.\"", 
+        caption: "\"I'm not sure. You'd better check the city website.\"", 
         image: "images/library_neu.png",
         condition: "evi-neu" 
       },
       { 
-        caption: "\"Tomorrow, the library only opens at afternoon.\"", 
+        caption: "\"Unfortunately, we don't have any. You'll need to drive a while to find one.\"", 
         image: "images/library_neg.png",
         condition: "evi-neg" 
       }
     ],
     polarQuestions: [
       { 
-        question: "Is the library open early in the morning?",
+        question: "Is there a library nearby?",
         type: "PPQ" 
       },
       { 
-        question: "Really? Is the library open early in the morning?",
+        question: "Really? Is there a library nearby?",
         type: "ReallyPQ" 
       },
       { 
-        question: "Is the library not open early in the morning?",
+        question: "Is there no library nearby?",
         type: "LNQ" 
       },
       { 
-        question: "Isn't the library open early in the morning?",
+        question: "Isn't there a library nearby?",
         type: "HNQ" 
       },
       { 
@@ -125,12 +125,12 @@ const stimuliSets = [
   },
   {
     category: "bike",
-    description1: "You're planning a relaxed weekend with your cousin. Last month, they talked about having picked up biking again, and you remember they told you:",
-    description2: "When you arrive at their place, you consider going for a ride and ask. They respond:",
+    description1: "You're planning a relaxed weekend with your cousin and are thinking about possible outdoor activities. You remember she told you last month:",
+    description2: "The next day, you visit her place thinking about suggesting some outdoor activities for next weekend, then you notice:",
     person:"your cousin",
     originalBiasOptions: [
       {
-        caption: "\"I've been riding a lot lately — every Sunday morning actually.\"",
+        caption: "\"I've been biking a lot lately — every Sunday morning actually.\"",
         image: "images/bike_pos.png",
         condition: "spk-pos"
       },
@@ -147,7 +147,7 @@ const stimuliSets = [
     ],
     contextualEvidenceOptions: [
       {
-        caption: "There's a bike helmet on the table and shoes by the door.",
+        caption: "There's a bike helmet on the table and chains by the door.",
         image: "images/bike_pos.png",
         condition: "evi-pos"
       },
@@ -157,7 +157,7 @@ const stimuliSets = [
         condition: "evi-neu"
       },
       {
-        caption: "You look around but see no sign of a bike anywhere.",
+        caption: "Her bike rack is empty, and the tires hanging on the wall look like they haven't been touched in ages.",
         image: "images/bike_neg.png",
         condition: "evi-neg"
       }
@@ -187,8 +187,8 @@ const stimuliSets = [
   },
   {
     category: "korean",
-    description1: "You're going to a welcome event for international students. You remember talking to Alex about languages before, and you recall Alex said:",
-    description2: "At the event, someone greets Alex in Korean. And Alex reacts:",
+    description1: "You're going to a welcome event for international students. You recall that Alex said something about language a while ago:",
+    description2: "At the event, someone greets Alex in Korean. Alex reacts:",
     person:"Alex",
     originalBiasOptions: [
       {
@@ -202,7 +202,7 @@ const stimuliSets = [
         condition: "spk-neu"
       },
       {
-        caption: "\"I found Korean too hard and has never tried learning it.\"",
+        caption: "\"I found Korean too hard and have never tried learning it.\"",
         image: "images/korean_neg.png",
         condition: "spk-neg"
       }
@@ -259,7 +259,7 @@ const stimuliSets = [
         condition: "spk-pos"
       },
       {
-        caption: "\"I usually just go with whatever available.\"",
+        caption: "\"I usually just go with whatever's available to drink.\"",
         image: "images/beer_neu.png",
         condition: "spk-neu"
       },
@@ -271,7 +271,7 @@ const stimuliSets = [
     ],
     contextualEvidenceOptions: [
       {
-        caption: "Joran picks up a six-pack of IPA and puts it in the cart.",
+        caption: "Jordan picks up a six-pack of hazy IPA and puts it in the cart.",
         image: "images/beer_pos.png",
         condition: "evi-pos"
       },
@@ -311,9 +311,9 @@ const stimuliSets = [
   },
   {
     category: "dog",
-    description1: "You're planning to visit your neighbor Rachael this afernoon. You're recalling past conversations, and you remember Rachael once said:",
-    description2: "In the afternoon, you're at their house and you notice:",
-    person:"Racheal",
+    description1: "You're planning to visit your neighbor Rachael this afternoon. You remember Rachael once said:",
+    description2: "In the afternoon, you're at her place and you notice:",
+    person:"Rachael",
     originalBiasOptions: [
       {
         caption: "\"Ever since I adopted Max, I can't imagine life without a dog.\"",
@@ -321,7 +321,7 @@ const stimuliSets = [
         condition: "spk-pos"
       },
       {
-        caption: "\"I like animals in general — dogs, cats, birds — all of them.\"",
+        caption: "\"I like animals in general. Dogs, cats, birds, all of them.\"",
         image: "images/dog_neu.png",
         condition: "spk-neu"
       },
@@ -338,12 +338,12 @@ const stimuliSets = [
         condition: "evi-pos"
       },
       {
-        caption: "You see some pet magazines on the table.",
+        caption: "There's an animal-themed calendar on the fridge, but no other signs of a pet.",
         image: "images/dog_neu.png",
         condition: "evi-neu"
       },
       {
-        caption: "The house was extremlty clean and there is no sign of an animal.",
+        caption: "The house was extremely clean and there is no sign of a dog.",
         image: "images/dog_neg.png",
         condition: "evi-neg"
       }
@@ -372,59 +372,59 @@ const stimuliSets = [
     ]
   },
   {
-    category: "car",
-    description1: "You and your friend Sam are planning a short weekend trip out of town for next month. You're thinking back to something Sam said recently:",
-    description2: "You arrive at Sam's place to finalize plans and notice:",
-    person:"Sam",
+    category: "rain",
+    description1: "You're about to head out for a walk but aren't sure of the weather. You remember something from the weather forecast yesterday:",
+    description2: "You hear your roommate come in, so you go to his room and ask him. He says:",
+    person: "your roommate",
     originalBiasOptions: [
       {
-        caption: "\"I just bought a used car few days ago — finally got my own ride!\"",
-        image: "images/car_pos.png",
+        caption: "It's going to rain all afternoon today.",
+        image: "images/rain_pos.png",
         condition: "spk-pos"
       },
       {
-        caption: "\"I've been thinking about getting a car sometime soon, but not sure when.\"",
-        image: "images/car_neu.png",
+        caption: "The weather is unpredictable these days.",
+        image: "images/rain_neu.png",
         condition: "spk-neu"
       },
       {
-        caption: "\"I don't drive. I never got a license.\"",
-        image: "images/car_neg.png",
+        caption: "It was supposed to stay dry all day—no rain expected.",
+        image: "images/rain_neg.png",
         condition: "spk-neg"
       }
     ],
     contextualEvidenceOptions: [
       {
-        caption: "There's a car parked in the driveway with Sam's parking permit on the dash.",
-        image: "images/car_pos.png",
+        caption: "It just started drizzling when I was walking back.",
+        image: "images/rain_pos.png",
         condition: "evi-pos"
       },
       {
-        caption: "You don't see a car out front, and nothing suggests whether Sam has one.",
-        image: "images/car_neu.png",
+        caption: "The sky looks weird—might rain, might not.",
+        image: "images/rain_neu.png",
         condition: "evi-neu"
       },
       {
-        caption: "Sam pulls out a bus schedule and suggests checking train times.",
-        image: "images/car_neg.png",
+        caption: "No sign of rain. It's actually kind of nice right now.",
+        image: "images/rain_neg.png",
         condition: "evi-neg"
       }
     ],
     polarQuestions: [
       {
-        question: "Do you have a car?",
+        question: "Is it raining?",
         type: "PPQ"
       },
       {
-        question: "Really? Do you have a car?",
+        question: "Really? Is it raining?",
         type: "ReallyPQ"
       },
       {
-        question: "Do you not have a car?",
+        question: "Is it not raining?",
         type: "LNQ"
       },
       {
-        question: "Don't you have a car?",
+        question: "Isn't it raining?",
         type: "HNQ"
       },
       {
@@ -432,5 +432,5 @@ const stimuliSets = [
         type: "Other"
       }
     ]
-  }
+  }  
   ]
