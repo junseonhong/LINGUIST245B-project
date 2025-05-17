@@ -402,6 +402,17 @@
       transition: width 0.4s ease;
       border-radius: 8px;
     }
+
+    .jspsych-content .consent p{
+      font-size: 16px !important;
+      line-height: 1.4;
+      text-align: justify;
+    }
+
+    .jspsych-content .consent h3 {
+      font-size: 18px !important;
+      line-height: 1.4;
+    }
   </style>  
 
 </head>
@@ -419,6 +430,43 @@
 
     //Store each trial in a list called timeline 
     const timeline = [];
+
+    //consent
+    const consent= {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+      <div class="consent";>
+      <p>Protocol Director: Robert Hawkins</p>
+      <p>Protocol Title: Communication and social cognition in natural audiovisual contexts</p>
+      <p>IRB# 77226</p> 
+
+      <p style="text-align: center;"><strong>DESCRIPTION</strong></p> 
+      <p>You are invited to participate in a research study about language and communication. The purpose of the research is to understand how you interact and communicate with other people in naturalistic settings as a fluent English speaker. This research will be conducted through the Prolific platform, including participants from the US.</p>
+
+      <p style="text-align: center;"><strong>TIME INVOLVEMENT</strong></p> 
+      <p>The task will last the amount of time advertised on Prolific. You are free to withdraw from the study at any time.</p>
+
+      <p style="text-align: center;"><strong>RISKS AND BENEFITS</strong></p> 
+      <p>There are no known risks associated with participating in this study. Study data will be stored securely, in compliance with Stanford University standards, minimizing the risk of confidentiality breach. This study advances our scientific understanding of how people communication in naturalistic settings. We cannot and do not guarantee or promise that you will receive any benefits from this study.</p>
+
+      <p style="text-align: center;"><strong>PAYMENTS</strong></p>
+      <p>You will receive payment in the amount advertised on Prolific. If you do not complete this study, you will receive prorated payment based on the time that you have spent. Additionally, you may be eligible for bonus payments as described in the instructions.</p>
+
+      <p style="text-align: center;"><strong>PARTICIPANT'S RIGHTS</strong></p> 
+      <p>If you have read this form and have decided to participate in this project, please understand your participation is voluntary and you have the right to withdraw your consent or discontinue participation at any time without penalty or loss of benefits to which you are otherwise entitled. The alternative is not to participate. You have the right to refuse to answer particular questions. The results of this research study may be presented at scientific or professional meetings or published in scientific journals. Your individual privacy will be maintained in all published and written data resulting from the study. In accordance with scientific norms, the data from this study may be used or shared with other researchers for future research (after removing personally identifying information) without additional consent from you.</p>
+
+      <p style="text-align: center;"><strong>CONTACT INFORMATION</strong>:</p> 
+      <p>Questions: If you have any questions, concerns or complaints about this research, its procedures, risks and benefits, contact the Protocol Director, Robert Hawkins (rdhawkins@stanford.edu, 217-549-6923).</p>
+
+      <p>Independent Contact: If you are not satisfied with how this study is being conducted, or if you have any concerns, complaints, or general questions about the research or your rights as a participant, please contact the Stanford Institutional Review Board (IRB) to speak to someone independent of the research team at 650-723-2480 or toll free at 1-866-680-2906, or email at irbnon-med@stanford.edu. You can also write to the Stanford IRB, Stanford University, 1705 El Camino Real, Palo Alto, CA 94306.</p>
+      <p>Please save or print a copy of this page for your records.</p>
+
+      <h3>If you agree to participate in this research, please click “continue”.</h3> 
+      </div>
+      `,
+      choices: ['Continue']
+    };
+    timeline.push(consent);
 
     // Instructions
     const instructions= {
@@ -445,7 +493,11 @@
         <div class="content">
           <h2>📋 Quick Checklist Before You Begin</h2>
           <div class="tip-box">
-            <h3>❗️ Microphone is required</h3>
+             <h3><img src="https://www.google.com/chrome/static/images/chrome-logo.svg" style="height: 1em; vertical-align: middle; margin-right: 0.3em;"> Chrome Browser required</h3>
+             <p><strong>To ensure the experiment runs smoothly, please use the Google Chrome browser.</strong></p>
+          </div>
+          <div class="tip-box">
+            <h3>🎙️ Microphone is required</h3>
             <p><strong>Please make sure you can use a microphone and allow microphone access when prompted by your browser.</strong></p>
             
             <div class="mic-confirm-box">
@@ -458,8 +510,9 @@
           <p class="mic-warning" style="color: red; display: none; margin-top: 10px;">
             ⚠️ Unfortunately, you cannot participate in this study without a working microphone.
           </p>
-
           <button id="custom-next" class="jspsych-btn">Next</button>
+
+          
         </div>
       `,
       choices: "NO_KEYS",
@@ -505,12 +558,13 @@
             <p>You'll now test your microphone by making a short recording.</p>
 
             <p>Speak naturally — you can say anything you like, such as: <em>"Testing, one, two, three."</em></p>
-
-            <p>After recording, you'll be able to play it back to make sure it's working.</p>
-
-            <p>When you're ready, click <strong>Next</strong> to begin.</p>
           </div>
-        </div>
+          <div class="tip-box">
+            <p>After recording, you'll be able to play it back to make sure it's working.</p> 
+            <p>If the microphone worked well, you should be able to hear what you recorded.</p>
+              <p><strong>Please make sure that your speaker is <em>on</em> with an appropriate volume.</stong></p>
+          </div>
+            <p>When you're ready, click <strong>"Next"</strong> to begin.</p>
         `
     ],
     show_clickable_nav: true,
@@ -524,7 +578,6 @@
           <div class="recording-box">
           <h3>🔴 Recording in Progress...</h3>
           <p>Speak naturally — for example: <em>"Testing, 1, 2, 3."</em></p>
-        </div>
       </div>
     `,
       show_done_button: true,
