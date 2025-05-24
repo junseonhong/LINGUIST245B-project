@@ -1,17 +1,17 @@
 const stimuliSets = [
   {
     category: "train",
-    description1: "Tomorrow you need to go from Palo Alto to San Francisco early in the morning. Your brother goes there quite frequently and you remember he said:",
-    description2: "You go to the ticket office at the station and you ask for a train ticket for the next morning. The operator responds:",
+    description1: "Tomorrow, you need to go from Palo Alto to San Francisco early in the morning. Your brother goes to San Francisco quite frequently, and you remember he said:",
+    description2: "You go to the ticket office at the station and ask for a train schedule for early the next morning. The operator responds:",
     person: "the operator",
     originalBiasOptions: [
       { 
-        caption: "\"I usually take a train in the morning to get to work, before 7:00.\"", 
+        caption: "\"I usually take a train in the morning, before 7:00.\"", 
         image: "images/train_pos.png",
         condition: "spk-pos" 
       },
       { 
-        caption: "\"I don't remember if there is a train in the early morning, before 7:00.\"", 
+        caption: "\"I don't remember if there is a train in the early morning. I only go there in the afternoon.\"", 
         image: "images/train_neu.png",
         condition: "spk-neu" 
       },
@@ -33,7 +33,7 @@ const stimuliSets = [
         condition: "evi-neu"
       },
       { 
-        caption: "\"The only train available is at 11:00\"", 
+        caption: "\"The only train available is at 13:00\"", 
         image: "images/train_neg.png",
         condition: "evi-neg" 
       }
@@ -64,7 +64,7 @@ const stimuliSets = [
   {
     category: "library",
     description1: "You need to read a book for a class and want to borrow it from the library. You're new to town, but you remember hearing something from your landlord:",
-    description2: "To make sure, you called the city hall and heard this:",
+    description2: "To make sure, you called the city hall and hear this:",
     person:"receptionist",
     originalBiasOptions: [
       { 
@@ -126,11 +126,11 @@ const stimuliSets = [
   {
     category: "bike",
     description1: "You're planning a relaxed weekend with your cousin and are thinking about possible outdoor activities. You remember she told you last month:",
-    description2: "The next day, you visit her place thinking about suggesting some outdoor activities for next weekend, then you notice:",
+    description2: "The next day, you visit her place thinking about suggesting some outdoor activities for next weekend. Then you notice:",
     person:"your cousin",
     originalBiasOptions: [
       {
-        caption: "\"I've been biking a lot lately — every Sunday morning actually.\"",
+        caption: "\"I've been biking a lot lately — every Sunday morning, actually.\"",
         image: "images/bike_pos.png",
         condition: "spk-pos"
       },
@@ -192,7 +192,7 @@ const stimuliSets = [
     person:"Alex",
     originalBiasOptions: [
       {
-        caption: "\"My grandparents are Korean and I grew up speaking it at home.\"",
+        caption: "\"My grandparents are Korean, and I grew up speaking it at home.\"",
         image: "images/korean_pos.png",
         condition: "spk-pos"
       },
@@ -214,7 +214,7 @@ const stimuliSets = [
         condition: "evi-pos"
       },
       {
-        caption: "He smiled and nodded politely, without saying anything.",
+        caption: "He smiled and nodded politely without saying anything.",
         image: "images/korean_neu.png",
         condition: "evi-neu"
       },
@@ -250,7 +250,7 @@ const stimuliSets = [
   {
     category: "beer",
     description1: "You're organizing a casual barbecue with friends and trying to decide what drinks to buy. You remember a past conversation with Jordan where he said:",
-    description2: "You're at the grocery store shopping for drinks, and you observe:",
+    description2: "You're at the grocery store shopping for drinks, and observe:",
     person:"Jordan",
     originalBiasOptions: [
       {
@@ -264,7 +264,7 @@ const stimuliSets = [
         condition: "spk-neu"
       },
       {
-        caption: "\"I am not a big fan of the taste of beer.\"",
+        caption: "\"I'm not a big fan of the taste of beer.\"",
         image: "images/beer_neg.png",
         condition: "spk-neg"
       }
@@ -312,7 +312,7 @@ const stimuliSets = [
   {
     category: "dog",
     description1: "You're planning to visit your neighbor Rachael this afternoon. You remember Rachael once said:",
-    description2: "In the afternoon, you're at her place and you notice:",
+    description2: "Later in the afternoon, you're at her place and you notice:",
     person:"Rachael",
     originalBiasOptions: [
       {
@@ -343,7 +343,7 @@ const stimuliSets = [
         condition: "evi-neu"
       },
       {
-        caption: "The house was extremely clean and there is no sign of a dog.",
+        caption: "The house was extremely clean, with no sign of a pet.",
         image: "images/dog_neg.png",
         condition: "evi-neg"
       }
@@ -373,7 +373,7 @@ const stimuliSets = [
   },
   {
     category: "rain",
-    description1: "You're about to head out for a walk but aren't sure of the weather. You remember something from the weather forecast yesterday:",
+    description1: "You're about to head out for a walk but aren't sure about the weather. You remember something from the weather forecast yesterday:",
     description2: "You hear your roommate come in, so you go to his room and ask him. He says:",
     person: "your roommate",
     originalBiasOptions: [
@@ -395,17 +395,17 @@ const stimuliSets = [
     ],
     contextualEvidenceOptions: [
       {
-        caption: "It just started drizzling when I was walking back.",
+        caption: "\"It just started drizzling when I was walking back.\"",
         image: "images/rain_pos.png",
         condition: "evi-pos"
       },
       {
-        caption: "The sky looks weird—might rain, might not.",
+        caption: "\"The sky looks weird—might rain, might not.\"",
         image: "images/rain_neu.png",
         condition: "evi-neu"
       },
       {
-        caption: "No sign of rain. It's actually kind of nice right now.",
+        caption: "\"No sign of rain. It's actually kind of nice right now.\"",
         image: "images/rain_neg.png",
         condition: "evi-neg"
       }
