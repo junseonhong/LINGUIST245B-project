@@ -1,0 +1,645 @@
+subject,category,caption1_condition,caption2_condition,selected_question,selected_question_type
+1,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+1,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+1,korean,spk-pos,evi-neg,Do you not speak Korean?,LNQ
+1,beer,spk-neu,evi-neg,Do you not like beer?,LNQ
+1,library,spk-pos,evi-neu,Isn't there a library nearby?,HNQ
+1,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+1,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+2,library,spk-neg,evi-neu,"could you please tell me is there a library in this city or in case you don't know, the city website?",Other
+2,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+2,korean,spk-neu,evi-pos,Really? Do you speak Korean?,ReallyPQ
+2,beer,spk-pos,evi-neu,Don't you like beer?,HNQ
+2,train,spk-neu,evi-neg,Is there no train in the early morning?,LNQ
+2,dog,spk-neu,evi-neu,Don't you have a dog?,HNQ
+2,bike,spk-pos,evi-neg,I thought you said you have been biking lately?,Other
+3,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+3,dog,spk-pos,evi-neg,Don't you have a dog?,HNQ
+3,korean,spk-neu,evi-neu,Do you speak Korean?,PPQ
+3,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+3,bike,spk-neu,evi-neg,Do you not have a bike?,LNQ
+3,beer,spk-neg,evi-neu,Do you not like beer?,LNQ
+3,library,spk-neg,evi-pos,Is there no library nearby?,LNQ
+4,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+4,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+4,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+4,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+4,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+4,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+4,train,spk-neu,evi-neg,Is there no train in the early morning?,LNQ
+5,bike,spk-neg,evi-pos,Do you have a bike?,PPQ
+5,library,spk-neu,evi-pos,Is there a library nearby?,PPQ
+5,rain,spk-neu,evi-neu,Is it raining?,PPQ
+5,beer,spk-neu,evi-neg,Do you not like beer?,LNQ
+5,dog,spk-pos,evi-neg,Don't you have a dog?,HNQ
+5,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+5,korean,spk-neg,evi-neu,Do you speak Korean?,PPQ
+6,library,spk-pos,evi-neg,Is there a library nearby?,PPQ
+6,train,spk-neu,evi-neg,Is there no train in the early morning?,LNQ
+6,bike,spk-pos,evi-neu,Don't you have a bike?,HNQ
+6,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+6,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+6,korean,spk-neg,evi-neu,Don't you speak Korean?,HNQ
+6,dog,spk-neu,evi-neu,Don't you have a dog?,HNQ
+7,rain,spk-neg,evi-neu,Is it raining?,PPQ
+7,library,spk-neu,evi-neg,Is there no library nearby?,LNQ
+7,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+7,korean,spk-pos,evi-neg,Why did you not learn Korean from your grandparents?,Other
+7,bike,spk-neg,evi-pos,Do you have a bike?,PPQ
+7,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+7,beer,spk-pos,evi-neu,Don't you like beer?,HNQ
+8,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+8,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+8,bike,spk-pos,evi-neg,Don't you have a bike?,HNQ
+8,train,spk-neu,evi-pos,Is there a train in the early morning?,PPQ
+8,korean,spk-neu,evi-neg,Really? Do you speak Korean?,ReallyPQ
+8,rain,spk-pos,evi-neu,Isn't it raining?,HNQ
+8,beer,spk-neg,evi-pos,Really? Do you like beer?,ReallyPQ
+9,dog,spk-neu,evi-neg,Do you not have a dog?,LNQ
+9,bike,spk-pos,evi-neg,I thought you said you ride your bike on Sundays?,Other
+9,library,spk-neg,evi-pos,Isn't there a library nearby?,HNQ
+9,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+9,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+9,beer,spk-pos,evi-neu,Really? Do you like beer?,ReallyPQ
+9,korean,spk-neg,evi-neu,Don't you speak Korean?,HNQ
+10,rain,spk-neg,evi-neu,So it isn't raining then?,Other
+10,library,spk-neu,evi-neu,Can you give me the website?,Other
+10,train,spk-neu,evi-neg,Is there no train in the early morning?,LNQ
+10,korean,spk-neg,evi-pos,I thought you couldn't speak Korean?,Other
+10,bike,spk-pos,evi-neu,Don't you have a bike?,HNQ
+10,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+10,dog,spk-pos,evi-neg,Really? Do you have a dog?,ReallyPQ
+11,dog,spk-neg,evi-neu,Did you get a dog?,Other
+11,bike,spk-neu,evi-neu,Have you found your bike yet?,Other
+11,beer,spk-neu,evi-neg,Do you want to check the beer aisle?,Other
+11,train,spk-pos,evi-neu,Is there a train before 7 am?,Other
+11,rain,spk-neg,evi-pos,Do I need an umbrella?,Other
+11,library,spk-pos,evi-neg,Isn't there a library nearby?,HNQ
+11,korean,spk-neu,evi-pos,Did you take Korean lessons?,Other
+12,rain,spk-neu,evi-neg,Is it raining?,PPQ
+12,train,spk-neu,evi-pos,Is there a train in the early morning?,PPQ
+12,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+12,beer,spk-pos,evi-neu,Do you like beer?,PPQ
+12,dog,spk-pos,evi-neg,Do you have a dog?,PPQ
+12,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+12,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+13,train,spk-pos,evi-neg,Is there a train in the early morning?,PPQ
+13,rain,spk-neu,evi-neu,Really? Is it raining?,ReallyPQ
+13,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+13,beer,spk-neg,evi-pos,Really? Do you like beer?,ReallyPQ
+13,bike,spk-pos,evi-neu,Do you have a bike?,PPQ
+13,library,spk-neg,evi-neu,Isn't there a library nearby?,HNQ
+13,korean,spk-neu,evi-neg,Do you speak Korean?,PPQ
+14,library,spk-neg,evi-pos,Is there a library nearby?,PPQ
+14,bike,spk-pos,evi-neg,Do you have a bike?,PPQ
+14,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+14,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+14,rain,spk-neg,evi-neu,Is it raining?,PPQ
+14,korean,spk-neu,evi-neg,Do you speak Korean?,PPQ
+14,beer,spk-pos,evi-neu,Do you like beer?,PPQ
+15,bike,spk-neu,evi-neg,Are you storing your bike someplace else?,Other
+15,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+15,korean,spk-pos,evi-neu,What did they say to you?,Other
+15,rain,spk-pos,evi-neg,Do you know if it's supposed to rain later?,Other
+15,dog,spk-neu,evi-neu,Does your landlord allow pets?,Other
+15,library,spk-neg,evi-neu,Can you please tell me the website for the city?,Other
+15,beer,spk-neu,evi-pos,Do you prefer a light or a dark IPA?,Other
+16,train,spk-pos,evi-neg,Really? Is there a train in the early morning?,ReallyPQ
+16,dog,spk-neu,evi-pos,Where's your dog?,Other
+16,rain,spk-pos,evi-neu,Is it raining?,PPQ
+16,beer,spk-neu,evi-neu,Do you like beer?,PPQ
+16,bike,spk-neg,evi-neu,Do you know where your bike is?,Other
+16,library,spk-neg,evi-pos,Isn't there a library nearby?,HNQ
+16,korean,spk-neu,evi-neg,Don't you speak Korean?,HNQ
+17,beer,spk-neu,evi-neg,Do you like wine instead,Other
+17,korean,spk-neu,evi-pos,Do you speak Korean?,PPQ
+17,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+17,rain,spk-pos,evi-neg,Is it raining?,PPQ
+17,library,spk-pos,evi-neu,Isn't there a library nearby?,HNQ
+17,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+17,dog,spk-neg,evi-neu,Don't you have a dog?,HNQ
+18,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+18,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+18,dog,spk-neg,evi-pos,Really? Do you have a dog?,ReallyPQ
+18,korean,spk-pos,evi-neu,Don't you speak Korean?,HNQ
+18,rain,spk-neu,evi-neg,Is it not raining?,LNQ
+18,train,spk-pos,evi-neg,Is there no train in the early morning?,LNQ
+18,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+19,library,spk-neg,evi-pos,Is there a library nearby?,PPQ
+19,train,spk-neu,evi-pos,Isn't there a train in the early morning?,HNQ
+19,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+19,rain,spk-neg,evi-neu,Is it raining?,PPQ
+19,korean,spk-pos,evi-neu,Do you speak Korean?,PPQ
+19,beer,spk-pos,evi-neg,Do you not like beer?,LNQ
+19,dog,spk-neu,evi-neg,Don't you have a dog?,HNQ
+20,rain,spk-neu,evi-neg,Isn't it raining?,HNQ
+20,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+20,dog,spk-neu,evi-neu,Don't you have a dog?,HNQ
+20,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+20,bike,spk-neg,evi-pos,Don't you have a bike?,HNQ
+20,korean,spk-neu,evi-pos,Don't you speak Korean?,HNQ
+20,train,spk-pos,evi-neu,Isn't there a train in the early morning?,HNQ
+21,korean,spk-neu,evi-pos,Really? Do you speak Korean?,ReallyPQ
+21,rain,spk-neg,evi-pos,Is it raining?,PPQ
+21,beer,spk-pos,evi-neu,Do you like beer?,PPQ
+21,library,spk-neg,evi-neu,Is there no library nearby?,LNQ
+21,train,spk-pos,evi-neg,Isn't there a train in the early morning?,HNQ
+21,dog,spk-neu,evi-neg,Don't you have a dog?,HNQ
+21,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+22,train,spk-pos,evi-neg,Isn't there a train in the early morning?,HNQ
+22,library,spk-neg,evi-neu,what is the address link to the city website?,Other
+22,korean,spk-neu,evi-pos,Really? Do you speak Korean?,ReallyPQ
+22,beer,spk-neu,evi-neu,Don't you like beer?,HNQ
+22,bike,spk-neg,evi-pos,Who's helmet and chains are those?,Other
+22,dog,spk-neu,evi-neg,Do you have a dog?,PPQ
+22,rain,spk-pos,evi-neu,Isn't it raining?,HNQ
+23,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+23,korean,spk-pos,evi-neu,Don't you speak Korean?,HNQ
+23,library,spk-neu,evi-neg,Isn't there a library nearby?,HNQ
+23,dog,spk-pos,evi-neg,Don't you have a dog?,HNQ
+23,beer,spk-neu,evi-neu,Don't you like beer?,HNQ
+23,bike,spk-neg,evi-pos,Do you not have a bike?,LNQ
+23,train,spk-neg,evi-neu,Really? Is there a train in the early morning?,ReallyPQ
+24,train,spk-pos,evi-neg,Isn't there a train in the early morning?,HNQ
+24,library,spk-neg,evi-pos,How do I get to the library on Escondido road?,Other
+24,dog,spk-neu,evi-pos,I guess you have a dog?,Other
+24,beer,spk-neg,evi-neu,What do you like instead of beer?,Other
+24,rain,spk-pos,evi-neu,So it hasn't rained yet?,Other
+24,korean,spk-neu,evi-neg,Really? You don't speak Korean?,Other
+24,bike,spk-neu,evi-neu,Did you find your bike?,Other
+25,dog,spk-neu,evi-neg,I thought you had a dog?,Other
+25,rain,spk-pos,evi-neu,Really? Is it raining?,ReallyPQ
+25,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+25,beer,spk-neu,evi-neu,Do you like beer?,PPQ
+25,library,spk-pos,evi-neg,Wasn't there a new one that just opened recently? ,Other
+25,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+25,train,spk-neu,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+26,library,spk-neg,evi-pos,Is there a library nearby?,PPQ
+26,bike,spk-pos,evi-neg,Don't you have a bike?,HNQ
+26,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+26,korean,spk-neu,evi-neg,Do you speak Korean?,PPQ
+26,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+26,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+26,rain,spk-neg,evi-neu,Is it raining?,PPQ
+27,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+27,rain,spk-pos,evi-neg,Is it raining?,PPQ
+27,bike,spk-neg,evi-neu,Don't you have a bike?,HNQ
+27,korean,spk-neu,evi-neg,Are you learning Korean?,Other
+27,beer,spk-pos,evi-neu,Don't you like beer?,HNQ
+27,train,spk-neu,evi-pos,Are there any other morning trains?,Other
+27,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+28,rain,spk-neu,evi-neg,I thought it was supposed to rain today?,Other
+28,beer,spk-neu,evi-pos,Really? Do you like beer?,ReallyPQ
+28,bike,spk-pos,evi-neu,Don't you have a bike?,HNQ
+28,library,spk-pos,evi-neg,Isn't there a library nearby?,HNQ
+28,dog,spk-neg,evi-neu,Really? Do you have a dog?,ReallyPQ
+28,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+28,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+29,train,spk-pos,evi-neg,Is there no train in the early morning?,LNQ
+29,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+29,beer,spk-pos,evi-neu,Do you not want beer?,Other
+29,korean,spk-neu,evi-neu,Do you understand Korean?,Other
+29,bike,spk-neu,evi-neg,Do you have a bike?,PPQ
+29,library,spk-neg,evi-neu,Is there no library nearby?,LNQ
+29,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+30,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+30,train,spk-neu,evi-pos,Is there a train in the early morning?,PPQ
+30,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+30,rain,spk-neu,evi-neg,Is it raining?,PPQ
+30,bike,spk-pos,evi-neg,Really? Do you have a bike?,ReallyPQ
+30,dog,spk-pos,evi-neu,Really? Do you have a dog?,ReallyPQ
+30,beer,spk-neg,evi-neu,Don't you like beer?,HNQ
+31,library,spk-pos,evi-neg,Isn't there a library nearby?,HNQ
+31,beer,spk-neu,evi-neu,Do you like beer?,PPQ
+31,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+31,bike,spk-neu,evi-neg,Do you have a bike?,PPQ
+31,train,spk-neu,evi-pos,Is that six in the morning,Other
+31,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+31,korean,spk-neg,evi-neu,Do you speak Korean?,PPQ
+32,bike,spk-neg,evi-pos,I thought you left the bike behind?,Other
+32,library,spk-pos,evi-neu,Is there no library nearby?,LNQ
+32,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+32,rain,spk-neu,evi-neg,Is it not raining?,LNQ
+32,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+32,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+32,dog,spk-neu,evi-neu,Do you have any pets?,Other
+33,library,spk-neu,evi-pos,Is there a library nearby?,PPQ
+33,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+33,korean,spk-pos,evi-neu,Really? Do you speak Korean?,ReallyPQ
+33,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+33,beer,spk-pos,evi-neg,Do you like beer?,PPQ
+33,bike,spk-neg,evi-pos,Do you have a bike?,PPQ
+33,rain,spk-neu,evi-neg,Is it not raining?,LNQ
+34,bike,spk-neu,evi-neu,Don't you have a bike?,HNQ
+34,korean,spk-pos,evi-neg,Really? you don't speak korean?,Other
+34,train,spk-neu,evi-pos,Is there a train in the early morning?,PPQ
+34,rain,spk-neg,evi-pos,Is it raining?,PPQ
+34,dog,spk-pos,evi-neu,Do you have a dog?,PPQ
+34,library,spk-neu,evi-neg,Is there no library nearby?,LNQ
+34,beer,spk-neg,evi-neu,Don't you like beer?,HNQ
+35,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+35,bike,spk-neg,evi-neu,Do you not have a bike?,LNQ
+35,beer,spk-neu,evi-neu,Do you like beer?,PPQ
+35,dog,spk-neu,evi-neg,Do you have a dog?,PPQ
+35,rain,spk-pos,evi-neu,Is it not raining?,LNQ
+35,korean,spk-pos,evi-neg,Do you not speak Korean?,LNQ
+35,library,spk-neu,evi-pos,Is there no library nearby?,LNQ
+36,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+36,beer,spk-neg,evi-pos,Do you like beer?,PPQ
+36,korean,spk-neu,evi-neg,Really? Do you speak Korean?,ReallyPQ
+36,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+36,rain,spk-neu,evi-pos,Is it not raining?,LNQ
+36,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+36,bike,spk-pos,evi-neg,Do you have a bike?,PPQ
+37,rain,spk-pos,evi-neu,Is it raining?,PPQ
+37,korean,spk-pos,evi-neg,Really? Do you speak Korean?,ReallyPQ
+37,library,spk-neg,evi-pos,Is there a library nearby?,PPQ
+37,dog,spk-neu,evi-neu,Do you have any pets?,Other
+37,train,spk-neu,evi-neg,Isn't there a train in the early morning?,HNQ
+37,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+37,bike,spk-neg,evi-neu,Don't you have a bike?,HNQ
+38,bike,spk-neu,evi-pos,Do you have a bike?,PPQ
+38,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+38,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+38,rain,spk-pos,evi-neu,Is it raining?,PPQ
+38,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+38,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+38,korean,spk-neu,evi-neg,Don't you speak Korean?,HNQ
+39,korean,spk-neu,evi-pos,Do you speak Korean?,PPQ
+39,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+39,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+39,bike,spk-neu,evi-neu,Don't you have a bike?,HNQ
+39,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+39,dog,spk-neu,evi-neg,Don't you have a dog?,HNQ
+39,library,spk-pos,evi-neu,Is there a library nearby?,PPQ
+40,beer,spk-pos,evi-neg,"I know you enjoy cold beers on a hot day, have you developed a taste for wine for other occasions?",Other
+40,library,spk-pos,evi-neu,Are you familiar with the new library location I recently heard about?,Other
+40,dog,spk-neu,evi-neg,"I know you like animals, so I have to ask, do you have any pets?",Other
+40,bike,spk-neg,evi-neu,"Your garage reminds me of mine, a place things disappear in for years! Is your old bike in here?",Other
+40,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+40,korean,spk-neu,evi-pos,It sounds like you speak Korean well. How long did it take to learn?,Other
+40,rain,spk-neu,evi-neu,"Does it look like storms are on the way, or just possibly some gray skies with light rain?",Other
+41,korean,spk-neg,evi-neu,Do you speak Korean?,PPQ
+41,beer,spk-pos,evi-neu,Don't you like beer?,HNQ
+41,rain,spk-neu,evi-neu,Is it raining?,PPQ
+41,dog,spk-neu,evi-neg,Do you not have a dog?,LNQ
+41,bike,spk-neu,evi-pos,Don't you have a bike?,HNQ
+41,library,spk-pos,evi-neg,Is there a library nearby?,PPQ
+41,train,spk-neg,evi-pos,Is there a train in the early morning?,PPQ
+42,bike,spk-neu,evi-neg,Don't you have a bike?,HNQ
+42,library,spk-neg,evi-neu,Isn't there a library nearby?,HNQ
+42,train,spk-neu,evi-neu,Really? Is there a train in the early morning?,ReallyPQ
+42,dog,spk-pos,evi-neg,Don't you have a dog?,HNQ
+42,korean,spk-pos,evi-neu,Don't you speak Korean?,HNQ
+42,beer,spk-neg,evi-pos,Do you like beer?,PPQ
+42,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+43,bike,spk-neg,evi-pos,Did you get a bike?,Other
+43,korean,spk-neg,evi-neu,Don't you speak Korean?,HNQ
+43,train,spk-pos,evi-neg,Isn't there an early morning train?,Other
+43,rain,spk-neu,evi-neg,So it's not raining?,Other
+43,dog,spk-neu,evi-neu,Don't you have a dog?,HNQ
+43,library,spk-pos,evi-neu,Is there a library nearby?,PPQ
+43,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+44,beer,spk-neu,evi-neg,Do you like beer?,PPQ
+44,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+44,dog,spk-neg,evi-neu,Have you thought anymore about getting a dog?,Other
+44,library,spk-neu,evi-neu,No one at city hall knows if the city has a library?,Other
+44,bike,spk-neg,evi-pos,Have you taken up biking again?,Other
+44,korean,spk-pos,evi-neg,Do you not remember much Korean from your childhood?,Other
+44,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+45,rain,spk-neg,evi-pos,Does it seem to be getting worse?,Other
+45,dog,spk-pos,evi-neu,Where's Max? ,Other
+45,train,spk-neu,evi-neg,Isn't there a train in the early morning?,HNQ
+45,library,spk-neu,evi-pos,Is Escondido Road nearby?,Other
+45,beer,spk-pos,evi-neg,You don't feel like beer today? ,Other
+45,korean,spk-neg,evi-neu,Do you speak Korean?,PPQ
+45,bike,spk-neu,evi-neu,Would you like me to help you look?,Other
+46,rain,spk-neg,evi-pos,Is it raining?,PPQ
+46,beer,spk-pos,evi-neg,Do you like beer?,PPQ
+46,train,spk-pos,evi-neu,Isn't there a train in the early morning?,HNQ
+46,dog,spk-neg,evi-neu,Do you not have a dog?,LNQ
+46,bike,spk-neu,evi-neg,Don't you have a bike?,HNQ
+46,library,spk-neu,evi-neu,Isn't there a library nearby?,HNQ
+46,korean,spk-neu,evi-pos,Do you speak Korean?,PPQ
+47,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+47,beer,spk-neu,evi-neu,Do you like beer?,PPQ
+47,bike,spk-neg,evi-pos,Have you started riding your bike again?,Other
+47,train,spk-neu,evi-neg,Is there no train in the early morning?,LNQ
+47,korean,spk-pos,evi-neu,Don't you speak Korean?,HNQ
+47,library,spk-neg,evi-neu,Do you know if there is a library near here?,Other
+47,dog,spk-pos,evi-neg,"You have a dog named Max, don't you?",Other
+48,bike,spk-neu,evi-pos,Don't you have a bike?,HNQ
+48,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+48,dog,spk-pos,evi-neg,Don't you have a dog?,HNQ
+48,library,spk-neg,evi-pos,Is there a library nearby?,PPQ
+48,korean,spk-neu,evi-neg,did you end up actually learning a language?,Other
+48,beer,spk-pos,evi-neu,will you have anything to drink?,Other
+48,rain,spk-neu,evi-neu,Is it raining?,PPQ
+49,beer,spk-neu,evi-neg,Do you like beer?,PPQ
+49,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+49,rain,spk-pos,evi-neg,Really? Is it raining?,ReallyPQ
+49,train,spk-neu,evi-pos,Is there a train in the early morning?,PPQ
+49,korean,spk-neg,evi-pos,Really? Do you speak Korean?,ReallyPQ
+49,library,spk-pos,evi-neu,Is there a library nearby?,PPQ
+49,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+50,rain,spk-neg,evi-pos,Is it raining?,PPQ
+50,beer,spk-neu,evi-neu,Do you like beer?,PPQ
+50,korean,spk-neg,evi-neu,Do you speak Korean?,PPQ
+50,train,spk-pos,evi-neu,Really? Is there a train in the early morning?,ReallyPQ
+50,bike,spk-neu,evi-neg,Do you have a bike?,PPQ
+50,library,spk-pos,evi-neg,Isn't there a library nearby?,HNQ
+50,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+51,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+51,library,spk-neu,evi-neg,Is there a library nearby?,PPQ
+51,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+51,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+51,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+51,beer,spk-neu,evi-neu,Don't you like beer?,HNQ
+51,rain,spk-pos,evi-neg,Isn't it raining?,HNQ
+52,bike,spk-neu,evi-neu,Really? Do you have a bike?,ReallyPQ
+52,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+52,library,spk-neg,evi-neu,Isn't there a library nearby?,HNQ
+52,train,spk-pos,evi-neg,Is there a train in the early morning?,PPQ
+52,korean,spk-pos,evi-neu,Don't you speak Korean?,HNQ
+52,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+52,dog,spk-neu,evi-neg,Don't you have a dog?,HNQ
+53,dog,spk-neu,evi-neg,Do you have a dog?,PPQ
+53,train,spk-neu,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+53,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+53,rain,spk-pos,evi-neu,Isn't it raining?,HNQ
+53,bike,spk-neg,evi-neu,Don't you have a bike?,HNQ
+53,korean,spk-neg,evi-pos,Didn't you say you were bad at Korean?,Other
+53,library,spk-neu,evi-neu,Is there no library nearby?,LNQ
+54,library,spk-neu,evi-pos,Is there a library nearby?,PPQ
+54,bike,spk-neu,evi-neg,Don't you have a bike?,HNQ
+54,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+54,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+54,rain,spk-neg,evi-pos,Is it raining?,PPQ
+54,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+54,beer,spk-neg,evi-neu,Do you like beer?,PPQ
+55,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+55,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+55,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+55,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+55,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+55,train,spk-neu,evi-neg,Isn't there a train in the early morning?,HNQ
+55,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+56,korean,spk-neu,evi-neg,"Oh, you don't speak Korean?",Other
+56,dog,spk-neg,evi-pos,Do you not have a dog?,LNQ
+56,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+56,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+56,library,spk-neu,evi-pos,Is that library nearby?,Other
+56,rain,spk-neg,evi-neu,But it's not raining?,Other
+56,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+57,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+57,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+57,beer,spk-pos,evi-neg,Do you not like beer?,LNQ
+57,korean,spk-neu,evi-neu,Do you not speak Korean?,LNQ
+57,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+57,library,spk-neu,evi-neg,Is there a library nearby?,PPQ
+57,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+58,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+58,dog,spk-neu,evi-neu,Don't you have a dog?,HNQ
+58,rain,spk-neu,evi-neg,Is it raining?,PPQ
+58,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+58,bike,spk-pos,evi-neu,Really? Do you have a bike?,ReallyPQ
+58,library,spk-neg,evi-neu,Is there no library nearby?,LNQ
+58,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+59,beer,spk-neu,evi-pos,Don't you like beer?,HNQ
+59,library,spk-neg,evi-pos,Isn't there a library nearby?,HNQ
+59,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+59,rain,spk-neg,evi-neu,Isn't it raining?,HNQ
+59,train,spk-neu,evi-neg,Is there a train in the early morning?,PPQ
+59,bike,spk-pos,evi-neu,Do you have a bike?,PPQ
+59,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+60,rain,spk-pos,evi-neu,Is it raining?,PPQ
+60,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+60,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+60,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+60,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+60,korean,spk-neu,evi-neg,Do you speak Korean?,PPQ
+60,dog,spk-pos,evi-neg,Don't you have a dog?,HNQ
+61,korean,spk-neu,evi-pos,Do you speak Korean?,PPQ
+61,bike,spk-neu,evi-neu,Don't you have a bike?,HNQ
+61,train,spk-neu,evi-neg,Is there no train in the early morning?,LNQ
+61,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+61,rain,spk-neg,evi-neu,Really? Is it raining?,ReallyPQ
+61,library,spk-neg,evi-pos,Really? Is there a library nearby?,ReallyPQ
+61,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+62,dog,spk-neu,evi-neg,Nice place. Is it pricey?,Other
+62,bike,spk-pos,evi-neg,Bike in the shop?,Other
+62,rain,spk-neg,evi-neu,"I wonder, will it actually rain?",Other
+62,train,spk-neg,evi-pos,Is the 6am train usually on time?,Other
+62,library,spk-pos,evi-neu,Is there a library nearby?,PPQ
+62,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+62,korean,spk-neu,evi-neu,Do you speak Korean?,PPQ
+63,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+63,korean,spk-neu,evi-pos,Do you speak Korean?,PPQ
+63,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+63,bike,spk-neu,evi-neu,Don't you have a bike?,HNQ
+63,rain,spk-pos,evi-neg,Is it raining?,PPQ
+63,library,spk-pos,evi-neu,Is there a library nearby?,PPQ
+63,beer,spk-neu,evi-neg,Don't you like beer?,HNQ
+64,rain,spk-neu,evi-neg,Is it not raining?,LNQ
+64,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+64,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+64,bike,spk-neg,evi-neu,Don't you have a bike?,HNQ
+64,library,spk-neg,evi-pos,Isn't there a library nearby?,HNQ
+64,train,spk-neu,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+64,korean,spk-neu,evi-neu,Do you speak Korean?,PPQ
+65,train,spk-neu,evi-neg,Isn't there a train in the early morning?,HNQ
+65,korean,spk-neg,evi-neu,Don't you speak Korean?,HNQ
+65,library,spk-pos,evi-neg,Isn't there a library nearby?,HNQ
+65,beer,spk-neu,evi-pos,Is that enough?,Other
+65,bike,spk-neu,evi-neu,Don't you have a bike?,HNQ
+65,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+65,rain,spk-neg,evi-pos,Is it raining?,PPQ
+66,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+66,korean,spk-pos,evi-neu,Do you speak Korean?,PPQ
+66,rain,spk-neu,evi-neg,Is it raining?,PPQ
+66,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+66,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+66,train,spk-pos,evi-neg,Is there a train in the early morning?,PPQ
+66,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+67,beer,spk-pos,evi-neu,Do you like beer?,PPQ
+67,dog,spk-neu,evi-neg,Don't you have any pets?,Other
+67,library,spk-neg,evi-pos,Isn't there a library nearby?,HNQ
+67,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+67,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+67,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+67,bike,spk-neg,evi-neu,Shouldn't we clean everything to find your bike?,Other
+68,dog,spk-neg,evi-neu,Do you not have a dog?,LNQ
+68,rain,spk-pos,evi-neg,Is it not raining?,LNQ
+68,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+68,library,spk-neu,evi-neg,Is there no library nearby?,LNQ
+68,bike,spk-neu,evi-neu,Do you not have a bike?,LNQ
+68,korean,spk-pos,evi-neu,Do you not speak Korean?,LNQ
+68,train,spk-neg,evi-pos,Is there no train in the early morning?,LNQ
+69,beer,spk-neu,evi-pos,"You're an IPA guy, huh?",Other
+69,library,spk-neg,evi-pos,Can you tell me where the closest library is?,Other
+69,korean,spk-neu,evi-neg,Are you planning on taking classes to learn how to speak Korean?,Other
+69,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+69,dog,spk-pos,evi-neg,Where is your Dog Max?,Other
+69,bike,spk-pos,evi-neu,What kind of Bike do you have?,Other
+69,rain,spk-neg,evi-neu,Do you think I should wear a rain coat?,Other
+70,korean,spk-neg,evi-pos,Really? Do you speak Korean?,ReallyPQ
+70,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+70,train,spk-pos,evi-neg,Really? Is there a train in the early morning?,ReallyPQ
+70,beer,spk-neu,evi-neg,Really? Do you like beer?,ReallyPQ
+70,library,spk-neg,evi-neu,Is there no library nearby?,LNQ
+70,bike,spk-pos,evi-neu,,Other
+70,dog,spk-neu,evi-neu,Do you not have a dog?,LNQ
+71,bike,spk-neu,evi-neu,Do you have a bike?,PPQ
+71,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+71,beer,spk-neu,evi-neg,Do you not like beer?,LNQ
+71,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+71,korean,spk-neu,evi-pos,Really? Do you speak Korean?,ReallyPQ
+71,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+71,library,spk-pos,evi-neg,Isn't there a library nearby?,HNQ
+72,train,spk-neg,evi-neu,Really? Is there a train in the early morning?,ReallyPQ
+72,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+72,rain,spk-pos,evi-neu,Really? Is it raining?,ReallyPQ
+72,korean,spk-neu,evi-neg,Don't you speak Korean?,HNQ
+72,bike,spk-neu,evi-pos,Do you not have a bike?,LNQ
+72,dog,spk-neg,evi-pos,Don't you have a dog?,HNQ
+72,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+73,korean,spk-neg,evi-neu,Does this make you want to try to learn to speak Korean?,Other
+73,rain,spk-pos,evi-neu,Isn't it raining?,HNQ
+73,train,spk-neu,evi-neg,Is there a train in the early morning?,PPQ
+73,bike,spk-neu,evi-pos,"I see you remembered your helmet and chain, did you forget your bike?",Other
+73,beer,spk-neu,evi-neu,Don't you like beer?,HNQ
+73,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+73,library,spk-pos,evi-neg,Is there no library nearby?,LNQ
+74,rain,spk-neu,evi-neu,Isn't it raining?,HNQ
+74,train,spk-neg,evi-pos,Isn't there a train in the early morning?,HNQ
+74,bike,spk-neg,evi-neu,Don't you have a bike?,HNQ
+74,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+74,library,spk-neu,evi-neg,Is there no library nearby?,LNQ
+74,korean,spk-pos,evi-neu,Do you speak Korean?,PPQ
+74,dog,spk-pos,evi-neg,Don't you have a dog?,HNQ
+75,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+75,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+75,beer,spk-neu,evi-pos,is this your favorite kind of beer?,Other
+75,train,spk-neu,evi-neu,Do you have any trains departing mid morning?,Other
+75,dog,spk-pos,evi-neu,Do you have a dog?,PPQ
+75,bike,spk-neu,evi-neg,what's the reason you haven't rode your bike in awhile? ,Other
+75,rain,spk-neg,evi-pos,Do you have an umbrella to keep my head dry from the rain? ,Other
+76,beer,spk-neg,evi-neu,Do you not like beer?,LNQ
+76,korean,spk-neg,evi-pos,Do you not speak Korean?,LNQ
+76,dog,spk-neu,evi-neg,Do you not have a dog?,LNQ
+76,library,spk-pos,evi-neg,Is there no library nearby?,LNQ
+76,rain,spk-neu,evi-pos,Is it raining?,PPQ
+76,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+76,bike,spk-pos,evi-neu,Do you have a bike?,PPQ
+77,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+77,rain,spk-neu,evi-neg,Isn't it raining?,HNQ
+77,bike,spk-neu,evi-pos,Do you have a bike?,PPQ
+77,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+77,beer,spk-pos,evi-neg,Don't you like beer?,HNQ
+77,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+77,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+78,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+78,bike,spk-pos,evi-neg,Don't you have a bike?,HNQ
+78,dog,spk-pos,evi-neu,Don't you have a dog?,HNQ
+78,korean,spk-neg,evi-neu,Really? Do you speak Korean?,ReallyPQ
+78,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+78,beer,spk-neu,evi-neg,Do you not like beer?,LNQ
+78,library,spk-neu,evi-pos,Is there a library nearby?,PPQ
+79,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+79,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+79,bike,spk-neu,evi-neg,Don't you have a bike?,HNQ
+79,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+79,library,spk-pos,evi-neg,Is there a library nearby?,PPQ
+79,korean,spk-pos,evi-neu,Don't you speak Korean?,HNQ
+79,rain,spk-neu,evi-neu,Isn't it raining?,HNQ
+80,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+80,korean,spk-neg,evi-pos,Really? Do you speak Korean?,ReallyPQ
+80,dog,spk-pos,evi-neu,"You have a dog, right?",Other
+80,rain,spk-pos,evi-neg,Is it not raining?,LNQ
+80,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+80,train,spk-neg,evi-neu,Is there no train in the early morning?,LNQ
+80,bike,spk-neu,evi-neg,Do you not have a bike?,LNQ
+81,rain,spk-neg,evi-pos,Really? Is it raining?,ReallyPQ
+81,korean,spk-neu,evi-pos,Do you speak Korean?,PPQ
+81,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+81,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+81,beer,spk-neu,evi-neu,Do you not like beer?,LNQ
+81,bike,spk-neu,evi-neg,Don't you have a bike?,HNQ
+81,dog,spk-pos,evi-neg,Really? Do you have a dog?,ReallyPQ
+82,library,spk-neu,evi-neg,Is there a library nearby?,PPQ
+82,korean,spk-neu,evi-pos,Don't you speak Korean?,HNQ
+82,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+82,beer,spk-pos,evi-neu,Don't you like beer?,HNQ
+82,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+82,rain,spk-neg,evi-neu,Really? Is it raining?,ReallyPQ
+82,bike,spk-pos,evi-neg,Do you not have a bike?,LNQ
+83,rain,spk-neu,evi-neg,Is it not raining?,LNQ
+83,bike,spk-neu,evi-pos,Do you have a bike?,PPQ
+83,beer,spk-pos,evi-neu,Don't you like beer?,HNQ
+83,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+83,library,spk-pos,evi-neg,Is there no library nearby?,LNQ
+83,korean,spk-neg,evi-neu,Is Korean that hard to learn?,Other
+83,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+84,rain,spk-pos,evi-neu,Did  you know rain is expected today all afternoon?,Other
+84,train,spk-neg,evi-neu,Is there a train in the early morning?,PPQ
+84,bike,spk-neu,evi-neg,When is the last time you went bike riding?,Other
+84,beer,spk-neu,evi-pos,What would you like to drink at the bar-b-que?,Other
+84,library,spk-pos,evi-neg,Is there a library nearby?,PPQ
+84,dog,spk-neu,evi-neu,Do  you have any pets?,Other
+84,korean,spk-neg,evi-pos,Do you speak Korean?,PPQ
+85,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+85,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+85,bike,spk-neg,evi-neu,Do you have a bike?,PPQ
+85,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+85,rain,spk-neu,evi-pos,Really? Is it raining?,ReallyPQ
+85,beer,spk-neg,evi-pos,Don't you not like beer?,Other
+85,dog,spk-neu,evi-neg,Don't you have a dog?,HNQ
+86,rain,spk-neu,evi-neg,Is it not raining?,LNQ
+86,library,spk-pos,evi-neu,Really? Is there a library nearby?,ReallyPQ
+86,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+86,korean,spk-neg,evi-neu,Do you speak Korean?,PPQ
+86,bike,spk-neg,evi-pos,you really don't have a bike anymore? ,Other
+86,beer,spk-pos,evi-neg,Do you not like beer?,LNQ
+86,train,spk-neu,evi-neu,Is there a train in the early morning?,PPQ
+87,library,spk-neg,evi-neu,Is there a library nearby?,PPQ
+87,train,spk-neg,evi-pos,Really? Is there a train in the early morning?,ReallyPQ
+87,korean,spk-neu,evi-neg,Don't you speak Korean?,HNQ
+87,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+87,dog,spk-neu,evi-neu,Don't you have a dog?,HNQ
+87,bike,spk-pos,evi-neu,Don't you have a bike?,HNQ
+87,rain,spk-pos,evi-neg,Isn't it raining?,HNQ
+88,dog,spk-neu,evi-pos,Do you have a dog?,PPQ
+88,korean,spk-pos,evi-neg,Really? Do you speak Korean?,ReallyPQ
+88,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+88,bike,spk-neu,evi-neg,Do you have a bike?,PPQ
+88,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+88,rain,spk-neg,evi-neu,Is it raining?,PPQ
+88,beer,spk-neg,evi-pos,Do you like beer?,PPQ
+89,rain,spk-neu,evi-neu,Isn't it raining?,HNQ
+89,beer,spk-neu,evi-neg,Don't you like beer?,HNQ
+89,korean,spk-pos,evi-neu,Don't you speak Korean?,HNQ
+89,train,spk-neg,evi-neu,Really? Is there a train in the early morning?,ReallyPQ
+89,library,spk-neu,evi-pos,Is there a library nearby?,PPQ
+89,bike,spk-pos,evi-neg,Don't you have a bike?,HNQ
+89,dog,spk-neg,evi-pos,Do you have a dog?,PPQ
+90,rain,spk-pos,evi-neg,Is it raining?,PPQ
+90,train,spk-pos,evi-neu,Is there a train in the early morning?,PPQ
+90,korean,spk-neg,evi-neu,Do you speak Korean?,PPQ
+90,beer,spk-neu,evi-pos,Do you like beer?,PPQ
+90,library,spk-neg,evi-pos,Is there a library nearby?,PPQ
+90,dog,spk-neu,evi-neu,Do you have a dog?,PPQ
+90,bike,spk-neu,evi-neg,Do you have a bike?,PPQ
+91,bike,spk-neg,evi-neu,Don't you have a bike?,HNQ
+91,korean,spk-pos,evi-neg,Don't you speak Korean?,HNQ
+91,beer,spk-neg,evi-pos,Really? Do you like beer?,ReallyPQ
+91,library,spk-neu,evi-neu,Is there a library nearby?,PPQ
+91,rain,spk-pos,evi-neu,Is it not raining?,LNQ
+91,dog,spk-neu,evi-neg,DO you have any pets?,Other
+91,train,spk-neu,evi-pos,SO I take the train at 6?,Other
+92,rain,spk-pos,evi-neu,Is it raining?,PPQ
+92,library,spk-neu,evi-pos,Really? Is there a library nearby?,ReallyPQ
+92,korean,spk-neu,evi-neg,Do you not speak Korean?,LNQ
+92,beer,spk-neg,evi-pos,Do you not like beer?,LNQ
+92,dog,spk-neu,evi-neu,Don't you have a dog?,HNQ
+92,bike,spk-neg,evi-neu,Don't you have a bike?,HNQ
+92,train,spk-pos,evi-neg,Isn't there a train in the early morning?,HNQ
