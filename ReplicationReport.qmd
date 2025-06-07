@@ -111,39 +111,8 @@ df.data <- read_csv(data_path) %>%
 
 #### Prepare data for analysis - create columns etc.
 ```{r table-summary}
-# Count responses by condition and PQ type
-table_raw <- df %>%
-  group_by(bias_condition, selected_question_type) %>%
-  summarise(count = n(), .groups = "drop") %>%
-  group_by(bias_condition) %>%
-  mutate(percentage = 100 * count / sum(count))
-
-table <- table_raw %>%
-  select(bias_condition, selected_question_type, percentage) %>%
-  pivot_wider(
-    names_from = selected_question_type,
-    values_from = percentage,
-    values_fill = 0
-  )
-
-head(table)
-```
-
-```{r plot-with-ci, message=F, warning=F}
-# Define order of conditions
-condition_order <- c("n/n", "n/¬p", "p/n", "p/¬p", "n/p", "¬p/p", "¬p/n")
-
-# Define custom colors for question types
-pq_colors <- c(
-  "HNQ" = "#191970",        # dark navy
-  "LNQ" = "#87CEEB",        # light blue
-  "Other" = "grey60",       # grey
-  "PPQ" = "#FFC0CB",        # light pink
-  "ReallyPQ" = "#DC143C"    # crimson red
-)
-
-# Recode bias labels and create condition factor
-df <- df %>%
+# Code condition labels
+df <- df.data %>%
   mutate(
     original_bias = recode(caption1_condition,
                            "spk-neu" = "n",
@@ -154,20 +123,94 @@ df <- df %>%
                              "evi-pos" = "p",
                              "evi-neg" = "¬p"),
     bias_condition = paste(original_bias, contextual_bias, sep = "/"),
-    bias_condition = factor(bias_condition, levels = condition_order)
+    bias_condition = factor(bias_condition, levels = condition_order),
+    question_label = recode(selected_question_type,
+                            "HNQ" = "HiNQ",
+                            "LNQ" = "LoNQ",
+                            "PPQ" = "PosQ",
+                            "ReallyPQ" = "ReallyPosQ")
   )
 
-# Item-level proportions
+# Count responses by condition and PQ type
+table_raw <- df %>%
+  group_by(bias_condition, question_label) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  group_by(bias_condition) %>%
+  mutate(percentage = 100 * count / sum(count))
+
+table <- table_raw %>%
+  select(bias_condition, question_label, percentage) %>%
+  pivot_wider(
+    names_from = question_label,
+    values_from = percentage,
+    values_fill = 0
+  )
+
+head(table)
+```
+
+As in the original study, I also computed the 95% confidence interval.
+
+```{r item-level-ci, message=F, warning=F}
+# Each unique `category` as the unit of analysis
 item_props <- df %>%
-  group_by(category, bias_condition, selected_question_type) %>%
+  group_by(category, bias_condition, question_label) %>%
   summarise(count = n(), .groups = "drop") %>%
   group_by(category, bias_condition) %>%
   mutate(prop = count / sum(count)) %>%
   ungroup()
 
-# Summarize with mean and 95% CI
+# Compute mean and 95% CI per condition and PQ type
+summary_ci_items <- item_props %>%
+  group_by(bias_condition, question_label) %>%
+  summarise(
+    mean_prop = mean(prop),
+    se = sd(prop) / sqrt(n()),
+    ci_low = mean_prop - 1.96 * se,
+    ci_high = mean_prop + 1.96 * se,
+    .groups = "drop"
+  ) %>%
+  mutate(
+    mean_pct = round(mean_prop * 100, 1),
+    ci_range = paste0(round(ci_low * 100, 1), "%–", round(ci_high * 100, 1), "%")
+  )
+
+# Summary table
+summary_ci_items %>%
+  select(
+    Condition = bias_condition,
+    `PQ Type` = question_label,
+    `Mean %` = mean_pct,
+    `95% CI` = ci_range
+  ) %>%
+  arrange(Condition, `PQ Type`)
+```
+
+Based on the data above, I first attempted to create a plot following the exact visualization method used in the original study.
+
+```{r plot-with-ci, message=F, warning=F}
+# Define order of conditions colors for question types following the original study
+condition_order <- c("n/n", "n/¬p", "p/n", "p/¬p", "n/p", "¬p/p", "¬p/n")
+
+pq_colors <- c(
+  "HiNQ" = "#191970",      
+  "LoNQ" = "#87CEEB",      
+  "Other" = "grey60",   
+  "PosQ" = "#FFC0CB",      
+  "ReallyPosQ" = "#DC143C"    
+)
+
+# Item-level proportions
+item_props <- df %>%
+  group_by(category, bias_condition, question_label) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  group_by(category, bias_condition) %>%
+  mutate(prop = count / sum(count)) %>%
+  ungroup()
+
+# Mean and 95% CI
 pq_summary <- item_props %>%
-  group_by(bias_condition, selected_question_type) %>%
+  group_by(bias_condition, question_label) %>%
   summarise(
     mean_prop = mean(prop),
     se = sd(prop) / sqrt(n()),
@@ -180,11 +223,11 @@ pq_summary <- item_props %>%
     ci_low_pct = ci_low * 100,
     ci_high_pct = ci_high * 100,
     bias_condition = factor(bias_condition, levels = condition_order),
-    selected_question_type = factor(selected_question_type, levels = names(pq_colors))
+    question_label = factor(question_label, levels = names(pq_colors))
   )
 
 # Plot with error bars
-ggplot(pq_summary, aes(x = bias_condition, y = mean_pct, fill = selected_question_type)) +
+ggplot(pq_summary, aes(x = bias_condition, y = mean_pct, fill = question_label)) +
   geom_col(position = position_dodge(width = 0.9), width = 0.8, color = "black") +
   geom_errorbar(
     aes(ymin = ci_low_pct, ymax = ci_high_pct),
@@ -194,7 +237,7 @@ ggplot(pq_summary, aes(x = bias_condition, y = mean_pct, fill = selected_questio
   ) +
   scale_fill_manual(
     values = pq_colors,
-    labels = c("HNQ", "LNQ", "Other", "PosQ", "ReallyPosQ")
+    labels = c("HiNQ", "LoNQ", "Other", "PosQ", "ReallyPosQ")
   ) +
   geom_hline(yintercept = 50, linetype = "dashed", color = "black") +
   ylim(0, 100) +
@@ -211,11 +254,68 @@ ggplot(pq_summary, aes(x = bias_condition, y = mean_pct, fill = selected_questio
   )
 ```
 
+To compare results with the original study:
+```{r figures, echo=F, fig.show='hold', out.width='30%'}
+knitr::include_graphics("https://raw.githubusercontent.com/junseonhong/LINGUIST245B-project/5d1f16c34edc26ba25d9ef65fc35db0f1eadc1ca/figure/original_fig.png")
+knitr::include_graphics("https://raw.githubusercontent.com/junseonhong/LINGUIST245B-project/96ae1a7f98078bf2584576cf9022e25c5eb88b26/figure/replication_fig.png")
+```
+However, this might not be the most effective way to visualize the data, as it is neither intuitive nor easy to follow. Therefore, I instead created a stacked bar plot.
+
+```{r stacked-bar-plot, message=F, warning=F}
+# Define order of conditions and color
+condition_order <- c("n/n", "n/¬p", "p/n", "p/¬p", "n/p", "¬p/p", "¬p/n")
+
+pq_colors <- c(
+  "HiNQ" = "#0072B2",        
+  "LoNQ" = "#E69F00",        
+  "Other" = "#CC79A7",       
+  "PosQ" = "#009E73",        
+  "ReallyPosQ" = "#D55E00"    
+)
+
+# Overall proportions per condition and PQ type
+pq_stack <- df %>%
+  group_by(bias_condition, question_label) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  group_by(bias_condition) %>%
+  mutate(prop = 100 * count / sum(count),
+         is_max = question_label == question_label[which.max(prop)]) %>%
+  mutate(question_label = factor(question_label, levels = names(pq_colors)))
+
+# Plot stacked bar chart
+ggplot(pq_stack, aes(x = bias_condition, y = prop, fill = question_label, alpha = is_max)) +
+  geom_col(position = "stack", width = 0.6, color = "black") +
+  scale_fill_manual(
+    values = pq_colors,
+    labels = c("HiNQ", "LoNQ", "Other", "PosQ", "ReallyPosQ")
+  ) +
+  scale_alpha_manual(values = c("TRUE" = 1, "FALSE" = 0.2), guide = "none") +
+  labs(
+    x = "Condition",
+    y = "Proportion of answers",
+    fill = "Polar question type"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "right",
+    legend.title = element_text(face = "bold")
+  )
+```
+
 ### Confirmatory analysis
 
-In the original study, the percentage of the preferred choice was averaged by participants and by items, and two separate one-sample t-tests were conducted. However, in the replication study, only the by-items analysis was conducted, as each subject saw each item only once.
+In the original study, the percentage of the preferred choice was averaged both by participants and by items, and two separate one-sample t-tests were conducted. However, in the replication study, only the by-item analysis (t-test) was performed, as each subject saw each item only once.
 
-```{r t_test}
+```{r ttest}
+# Find the most preferred PQ type in each condition
+most_preferred_types <- df %>%
+  group_by(bias_condition, selected_question_type) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  group_by(bias_condition) %>%
+  slice_max(count, n = 1, with_ties = FALSE) %>%
+  select(bias_condition, selected_question_type)
+
 # Define a function to run the t-test by item (category)
 run_ttest <- function(condition, pq_type) {
   df %>%
@@ -244,33 +344,116 @@ summary_table <- ttest_results %>%
     df = map_dbl(t_result, ~ .x$parameter),
     p_value = map_dbl(t_result, ~ .x$p.value),
     mean_pct = round(mean_prop * 100, 1),
-    sig = ifelse(p_value < 0.05, "*", "")
+    sig = ifelse(p_value < 0.05, "*", ""),
+    preferred_choice = recode(pq_type,
+                              "HNQ" = "HiNQ",
+                              "LNQ" = "LoNQ",
+                              "PPQ" = "PosQ",
+                              "ReallyPQ" = "ReallyPosQ",
+                              .default = pq_type)
   ) %>%
   select(
-    `preferred_choice` = pq_type,
+    `preferred_choice`,
     `Mean %` = mean_pct,
     `t` = t_value,
     `df`,
     `p` = p_value,
-    `Sig.` = sig
+    `Sig.` = sig,
   )
 head(summary_table)
 ```
 
-*Side-by-side graph with original graph is ideal here*
-```{r graph-combine-remote, message=F, warning=F}
-library(magick)
+To further explore the data from both studies, I created a few scatter plots. Because the original paper did not provide exact proportions for each PQ type in all conditions, I estimated some of the percentages based on the figure shown earlier.
 
-img1 <- image_read("https://raw.githubusercontent.com/junseonhong/LINGUIST245B-project/5d1f16c34edc26ba25d9ef65fc35db0f1eadc1ca/figure/original_fig.png")
-img2 <- image_read("https://raw.githubusercontent.com/junseonhong/LINGUIST245B-project/5d1f16c34edc26ba25d9ef65fc35db0f1eadc1ca/figure/replication_fig.png")
+```{r scatter-compare, message=F, warning=F}
+# Comparison table
+comparison_df <- tibble::tribble(
+  ~Condition, ~PQ_Type,      ~Original, ~Replication,
+  "n/n",      "HiNQ",           16.0,      22.0,
+  "n/n",      "LoNQ",           17.0,       5.4,
+  "n/n",      "Other",           2.0,      13.0,
+  "n/n",      "PosQ",           63.0,      57.0,
+  "n/n",      "ReallyPosQ",      2.0,       3.3,
 
-combined <- image_append(c(img1, img2))
-print(combined)
+  "n/¬p",     "HiNQ",           24.0,      25.0,
+  "n/¬p",     "LoNQ",           59.0,      28.3,
+  "n/¬p",     "Other",           7.0,      18.0,
+  "n/¬p",     "PosQ",            9.5,      25.8,
+  "n/¬p",     "ReallyPosQ",      0.5,       3.3,
+  
+  "p/n",      "HiNQ",           65.0,      38.0,
+  "p/n",      "LoNQ",            8.0,       4.3,
+  "p/n",      "Other",           5.0,      12.0,
+  "p/n",      "PosQ",           21.0,      37.0,
+  "p/n",      "ReallyPosQ",      1.0,       8.7,
+
+  "p/¬p",     "HiNQ",           67.0,      45.7,
+  "p/¬p",     "LoNQ",           26.0,      14.1,
+  "p/¬p",     "Other",           4.0,      14.1,
+  "p/¬p",     "PosQ",            3.0,      17.4,
+  "p/¬p",     "ReallyPosQ",      2.0,       8.7,
+
+  "n/p",      "HiNQ",            1.0,       6.5,
+  "n/p",      "LoNQ",            3.5,       3.3,
+  "n/p",      "Other",           3.5,      16.3,
+  "n/p",      "PosQ",           54.0,      52.2,
+  "n/p",      "ReallyPosQ",     38.0,      21.7,
+
+  "¬p/p",     "HiNQ",           2.25,       8.7,
+  "¬p/p",     "LoNQ",           2.25,       6.5,
+  "¬p/p",     "Other",           3.5,      16.3,
+  "¬p/p",     "PosQ",           32.0,      39.1,
+  "¬p/p",     "ReallyPosQ",     60.0,      29.3,
+)
+
+# Color
+pq_colors <- c(
+  "HiNQ" = "#0072B2",        
+  "LoNQ" = "#E69F00",        
+  "Other" = "#CC79A7",       
+  "PosQ" = "#009E73",        
+  "ReallyPosQ" = "#D55E00"    
+)
+
+# Scatter plot
+ggplot(comparison_df, aes(x = Original, y = Replication, color = PQ_Type, shape = PQ_Type)) +
+  geom_point(size = 3) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray40") +
+  facet_wrap(~ Condition) +
+  scale_color_manual(values = pq_colors) +
+  labs(
+    x = "Original Study (%)",
+    y = "Replication Study (%)"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(legend.title = element_blank())
 ```
 
-```{r figures, echo=FALSE, fig.show='hold', out.width='48%'}
-knitr::include_graphics("https://raw.githubusercontent.com/junseonhong/LINGUIST245B-project/5d1f16c34edc26ba25d9ef65fc35db0f1eadc1ca/figure/original_fig.png")
-knitr::include_graphics("https://raw.githubusercontent.com/junseonhong/LINGUIST245B-project/5d1f16c34edc26ba25d9ef65fc35db0f1eadc1ca/figure/replication_fig.png")
+```{r scatter-by-condition, message=F, warning=F}
+palette <- c(
+  "n/n"   = "#E69F00",  
+  "n/¬p"  = "#56B4E9",  
+  "p/n"   = "#009E73",  
+  "p/¬p"  = "#F0E442",   
+  "n/p"   = "#0072B2",   
+  "¬p/p"  = "#D55E00",  
+  "¬p/n"  = "#CC79A7"   
+)
+
+
+ggplot(comparison_df, aes(x = Original, y = Replication, color = Condition, shape = PQ_Type)) +
+  geom_point(size = 3) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray40") +
+  scale_color_manual(values = palette) +
+  labs(
+    x = "Original Study (%)",
+    y = "Replication Study (%)"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "right"
+  )
 ```
 
 ## Discussion
